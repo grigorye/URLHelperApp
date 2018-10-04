@@ -1,0 +1,16 @@
+stages:
+  - build
+
+build_project:
+  stage: build
+  script:
+    - packageName="${CI_PROJECT_NAME:?}"
+    - ./build-gitlab-cmd "$PWD/build" "${packageName:?}"
+  artifacts:
+    paths:
+      - build/*.pkg
+      - build/*.dmg
+      - build/Formula/*.rb
+  tags:
+    - xcode-10
+    - macos

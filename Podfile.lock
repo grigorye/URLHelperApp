@@ -1,0 +1,16 @@
+PODS:
+  - GEContinuousIntegration (0.1)
+
+DEPENDENCIES:
+  - GEContinuousIntegration (from `../GEContinuousIntegration`)
+
+EXTERNAL SOURCES:
+  GEContinuousIntegration:
+    :path: "../GEContinuousIntegration"
+
+SPEC CHECKSUMS:
+  GEContinuousIntegration: bde3928b1101d00fe2c43f2364330c581d437438
+
+PODFILE CHECKSUM: 4e7f79b559951be206c0f806ce17db06ba71f1ed
+
+COCOAPODS: 1.5.3
