@@ -11,6 +11,9 @@ pod 'GEContinuousIntegration', :git => 'https://github.com/grigorye/GEContinuous
 target 'URLHelperApp' do
   use_frameworks!
 
+  pod 'Then', '~> 2.4.0'
+  pod 'Result', '~> 4.0.0'
+
   target 'URLHelperAppTests' do
     inherit! :search_paths
   end

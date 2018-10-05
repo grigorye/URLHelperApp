@@ -1,8 +1,17 @@
 PODS:
   - GEContinuousIntegration (0.1)
+  - Result (4.0.0)
+  - Then (2.4.0)
 
 DEPENDENCIES:
   - GEContinuousIntegration (from `https://github.com/grigorye/GEContinuousIntegration`, branch `master`)
+  - Result (~> 4.0.0)
+  - Then (~> 2.4.0)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Result
+    - Then
 
 EXTERNAL SOURCES:
   GEContinuousIntegration:
@@ -16,7 +25,9 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   GEContinuousIntegration: 7169e73e490730fd52a3a452fc85919c48f75567
+  Result: 7645bb3f50c2ce726dd0ff2fa7b6f42bbe6c3713
+  Then: 71866660c7af35a7343831f7668e7cd2b62ee0f2
 
-PODFILE CHECKSUM: 4b9017879fc7fdf81bbb54f9c5319d9d79ec5699
+PODFILE CHECKSUM: ccaa3009b11b3fc310aef5b8cbefbf98d3e47270
 
 COCOAPODS: 1.5.3
