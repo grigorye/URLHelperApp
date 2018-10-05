@@ -10,7 +10,6 @@
 		A3369735F9749E9447A04C8E /* Pods_URLHelperApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F3F99E5E9946088E41F1BD6 /* Pods_URLHelperApp.framework */; };
 		A4DFC35409A054D6555A9E5D /* Pods_URLHelperAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6318B34AA32F0174E4B2E529 /* Pods_URLHelperAppUITests.framework */; };
 		C471F6B22165F34E0031CF18 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C471F6B12165F34E0031CF18 /* AppDelegate.swift */; };
-		C471F6B42165F34E0031CF18 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C471F6B32165F34E0031CF18 /* ViewController.swift */; };
 		C471F6B62165F3550031CF18 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C471F6B52165F3550031CF18 /* Assets.xcassets */; };
 		C471F6B92165F3550031CF18 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C471F6B72165F3550031CF18 /* Main.storyboard */; };
 		C471F6C52165F3560031CF18 /* URLHelperAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C471F6C42165F3560031CF18 /* URLHelperAppTests.swift */; };
@@ -51,7 +50,6 @@
 		995FF915C998144158B5A71A /* Pods-URLHelperApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-URLHelperApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-URLHelperApp/Pods-URLHelperApp.release.xcconfig"; sourceTree = "<group>"; };
 		C471F6AE2165F34E0031CF18 /* URLHelperApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = URLHelperApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C471F6B12165F34E0031CF18 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C471F6B32165F34E0031CF18 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C471F6B52165F3550031CF18 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C471F6B82165F3550031CF18 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C471F6BA2165F3550031CF18 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -139,7 +137,6 @@
 				C471F6DD2166C2E60031CF18 /* URLToAppMapper.swift */,
 				C471F6E32168186A0031CF18 /* AppBundleIdentiferForURL */,
 				C471F6B12165F34E0031CF18 /* AppDelegate.swift */,
-				C471F6B32165F34E0031CF18 /* ViewController.swift */,
 				C471F6B52165F3550031CF18 /* Assets.xcassets */,
 				C471F6B72165F3550031CF18 /* Main.storyboard */,
 				C471F6BA2165F3550031CF18 /* Info.plist */,
@@ -404,7 +401,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C471F6B42165F34E0031CF18 /* ViewController.swift in Sources */,
 				C471F6B22165F34E0031CF18 /* AppDelegate.swift in Sources */,
 				C471F6E821681F150031CF18 /* SampleURLToAppMapper.swift in Sources */,
 				C471F6E22167E9F60031CF18 /* ScriptBasedURLToAppMapper.swift in Sources */,
