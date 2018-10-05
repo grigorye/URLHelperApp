@@ -5,8 +5,8 @@ platform :osx, '10.10'
 
 project "URLHelperApp.xcodeproj"
 
-#pod 'GEContinuousIntegration', :git => 'https://github.com/grigorye/GEContinuousIntegration', :branch => 'master'
-pod 'GEContinuousIntegration', :path => '../GEContinuousIntegration'
+pod 'GEContinuousIntegration', :git => 'https://github.com/grigorye/GEContinuousIntegration', :branch => 'master'
+#pod 'GEContinuousIntegration', :path => '../GEContinuousIntegration'
 
 target 'URLHelperApp' do
   use_frameworks!
