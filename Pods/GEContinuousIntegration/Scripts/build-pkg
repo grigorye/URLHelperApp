@@ -1,0 +1,52 @@
+#! /usr/bin/env -i /bin/sh -ex
+
+pkg="${1:?}"; shift
+dmg=$(echo "${pkg:?}" | sed 's/.pkg$/.dmg/')
+
+export "${@}"
+
+bn=$(basename "$0")
+
+eval "$(/usr/libexec/path_helper)"
+
+workspaces=(*.xcworkspace)
+workspace="${workspaces[0]}"
+projectName="${workspace%.*}"
+
+tmpdir=$(mktemp -d "${TMPDIR:-/tmp}/${bn:?}.XXXXX")
+
+installDir="${DSTROOT:-${tmpdir:?}/Install}"
+derivedDataPath="${GE_DERIVED_DATA_PATH:-${tmpdir:?}/DerivedData}"
+
+buildProject() {
+    xcodebuild \
+        -workspace "${workspace:?}" \
+        -scheme "${projectName:?}" \
+        "${@}"
+}
+
+buildProject \
+    -derivedDataPath "${derivedDataPath:?}" \
+    install \
+    DSTROOT="${installDir:?}" \
+    "${@}"
+
+buildSetting() {
+    local name="${1:?}"; shift
+    buildProject -showBuildSettings | awk '/.* '"${name:?}"' = (.*)/ {print $3}'
+}
+
+productDefinitionPlist=$(buildSetting 'PRODUCT_DEFINITION_PLIST')
+productName="${projectName:?}"
+
+productbuild \
+    --product "${productDefinitionPlist:?}" \
+    --component "${installDir:?}"/Applications/"${productName:?}".app /Applications \
+    "${pkg:?}"
+
+hdiutil create \
+    -volname "${productName:?}" \
+    -srcfolder "${installDir:?}"/Applications \
+    -ov \
+    -format UDZO \
+    "${dmg:?}"

@@ -1,0 +1,23 @@
+{
+  "name": "GEContinuousIntegration",
+  "version": "0.1",
+  "summary": "A few scripts that might be reused for common tasks specific to continous integration.",
+  "description": "Don't reinvent the wheel. Get common CI stuff setup in a minute, be it GitLab, Travis or whatever else.",
+  "homepage": "https://github.com/grigorye/GEContinuousIntegration",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "Grigory Entin": "grigory.entin@gmail.com"
+  },
+  "platforms": {
+    "ios": "10.0",
+    "osx": "10.10"
+  },
+  "source": {
+    "git": "https://github.com/grigorye/GEContinuousIntegration.git",
+    "tag": "0.1"
+  },
+  "preserve_paths": "Scripts/*"
+}

@@ -1,0 +1,17 @@
+#! /bin/sh -x
+
+set -eu -o pipefail
+
+pkg="${1:?}"; shift
+
+dn=$(dirname "$0")
+
+bundle install
+bundle exec pod repo update
+bundle exec pod install
+
+"$dn"/build-pkg \
+    "${pkg:?}" \
+    ${DEVELOPER_DIR:+DEVELOPER_DIR="${DEVELOPER_DIR}"} \
+    "${@}" \
+    | "$dn"/xcpretty
