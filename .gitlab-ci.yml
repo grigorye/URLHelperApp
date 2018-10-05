@@ -6,7 +6,7 @@ build_project:
   script:
     - formulaName="url-helper-app"
     - packageName="${CI_PROJECT_NAME:?}"
-    - ./Pods/GEContinuousIntegration/build-gitlab-cmd "$PWD/build" "${packageName:?}" "${formulaName:?}"
+    - ./Pods/GEContinuousIntegration/Scripts/build-gitlab-cmd "$PWD/build" "${packageName:?}" "${formulaName:?}"
   artifacts:
     paths:
       - build/*.pkg
