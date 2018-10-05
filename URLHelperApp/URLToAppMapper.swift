@@ -6,30 +6,15 @@
 //  Copyright © 2018 Grigory Entin. All rights reserved.
 //
 
+import Result
 import Foundation
+
+typealias _Result<T> = Result<T, AnyError>
 
 protocol URLToAppMapper {
     
-    func appBundleIdentifierFor(_ url: URL) -> String
-}
-
-extension String {
+    typealias Result<T> = _Result<T>
     
-    fileprivate func matchingAppBundleIdentifier() -> String {
-        switch self {
-        case _ where hasPrefix("https://stackoverflow.com"):
-            return "org.epichrome.app.Coding"
-        default:
-            return "com.google.Chrome"
-        }
-    }
+    func appBundleIdentifierFor(_ url: URL, completionHandler: @escaping (Result<String>) -> Void)
 }
 
-class URLToAppMapperImp : URLToAppMapper {
-    
-    func appBundleIdentifierFor(_ url: URL) -> String {
-        let urlString = url.absoluteString
-
-        return urlString.matchingAppBundleIdentifier()
-    }
-}
