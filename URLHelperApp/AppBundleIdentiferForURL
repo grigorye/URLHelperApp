@@ -1,0 +1,21 @@
+#!/bin/sh -x
+
+#  AppBundleIdentiferForURL
+#  URLHelperApp
+#
+#  Created by Grigory Entin on 06/10/2018.
+#  Copyright © 2018 Grigory Entin. All rights reserved.
+
+set -eu -o pipefail
+
+url="${1:?}"
+shift
+
+case "${url:?}" in
+"https://stackoverflow.com/"*)
+	echo "org.epichrome.app.Coding"
+	;;
+*)
+	echo "com.google.Chrome"
+	;;
+esac
