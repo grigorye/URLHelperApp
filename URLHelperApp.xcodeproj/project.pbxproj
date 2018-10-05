@@ -16,6 +16,9 @@
 		C471F6C52165F3560031CF18 /* URLHelperAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C471F6C42165F3560031CF18 /* URLHelperAppTests.swift */; };
 		C471F6D02165F3560031CF18 /* URLHelperAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C471F6CF2165F3560031CF18 /* URLHelperAppUITests.swift */; };
 		C471F6DE2166C2E60031CF18 /* URLToAppMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C471F6DD2166C2E60031CF18 /* URLToAppMapper.swift */; };
+		C471F6E22167E9F60031CF18 /* ScriptBasedURLToAppMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C471F6E12167E9F60031CF18 /* ScriptBasedURLToAppMapper.swift */; };
+		C471F6E621681A380031CF18 /* AppBundleIdentiferForURL in Resources */ = {isa = PBXBuildFile; fileRef = C471F6E32168186A0031CF18 /* AppBundleIdentiferForURL */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		C471F6E821681F150031CF18 /* SampleURLToAppMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C471F6E721681F150031CF18 /* SampleURLToAppMapper.swift */; };
 		E8C15FB7F93A84BBFFE27343 /* Pods_URLHelperAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 506E1D10CE0ED996FA71A152 /* Pods_URLHelperAppTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -60,6 +63,9 @@
 		C471F6CF2165F3560031CF18 /* URLHelperAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLHelperAppUITests.swift; sourceTree = "<group>"; };
 		C471F6D12165F3560031CF18 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C471F6DD2166C2E60031CF18 /* URLToAppMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLToAppMapper.swift; sourceTree = "<group>"; };
+		C471F6E12167E9F60031CF18 /* ScriptBasedURLToAppMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScriptBasedURLToAppMapper.swift; sourceTree = "<group>"; };
+		C471F6E32168186A0031CF18 /* AppBundleIdentiferForURL */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = AppBundleIdentiferForURL; sourceTree = "<group>"; };
+		C471F6E721681F150031CF18 /* SampleURLToAppMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleURLToAppMapper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,8 +134,11 @@
 		C471F6B02165F34E0031CF18 /* URLHelperApp */ = {
 			isa = PBXGroup;
 			children = (
-				C471F6B12165F34E0031CF18 /* AppDelegate.swift */,
+				C471F6E12167E9F60031CF18 /* ScriptBasedURLToAppMapper.swift */,
+				C471F6E721681F150031CF18 /* SampleURLToAppMapper.swift */,
 				C471F6DD2166C2E60031CF18 /* URLToAppMapper.swift */,
+				C471F6E32168186A0031CF18 /* AppBundleIdentiferForURL */,
+				C471F6B12165F34E0031CF18 /* AppDelegate.swift */,
 				C471F6B32165F34E0031CF18 /* ViewController.swift */,
 				C471F6B52165F3550031CF18 /* Assets.xcassets */,
 				C471F6B72165F3550031CF18 /* Main.storyboard */,
@@ -178,6 +187,7 @@
 				C471F6AA2165F34E0031CF18 /* Sources */,
 				C471F6AB2165F34E0031CF18 /* Frameworks */,
 				C471F6AC2165F34E0031CF18 /* Resources */,
+				68EF1FB93038400DD5F13C6E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -276,6 +286,7 @@
 			files = (
 				C471F6B62165F3550031CF18 /* Assets.xcassets in Resources */,
 				C471F6B92165F3550031CF18 /* Main.storyboard in Resources */,
+				C471F6E621681A380031CF18 /* AppBundleIdentiferForURL in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -340,6 +351,30 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		68EF1FB93038400DD5F13C6E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-URLHelperApp/Pods-URLHelperApp-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
+				"${BUILT_PRODUCTS_DIR}/Then/Then.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Then.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-URLHelperApp/Pods-URLHelperApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		86370D21EFFA0007740BB3C3 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -371,6 +406,8 @@
 			files = (
 				C471F6B42165F34E0031CF18 /* ViewController.swift in Sources */,
 				C471F6B22165F34E0031CF18 /* AppDelegate.swift in Sources */,
+				C471F6E821681F150031CF18 /* SampleURLToAppMapper.swift in Sources */,
+				C471F6E22167E9F60031CF18 /* ScriptBasedURLToAppMapper.swift in Sources */,
 				C471F6DE2166C2E60031CF18 /* URLToAppMapper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -538,7 +575,7 @@
 			baseConfigurationReference = 1D483F6B67828E3C2B9406A3 /* Pods-URLHelperApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = URLHelperApp/URLHelperApp.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 465NA5BW7E;
@@ -550,6 +587,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.grigorye.URLHelperApp;
 				PRODUCT_DEFINITION_PLIST = "$(TARGET_NAME)/Distribution/ProductDefinition.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
@@ -559,7 +597,7 @@
 			baseConfigurationReference = 995FF915C998144158B5A71A /* Pods-URLHelperApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = URLHelperApp/URLHelperApp.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 465NA5BW7E;
@@ -571,6 +609,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.grigorye.URLHelperApp;
 				PRODUCT_DEFINITION_PLIST = "$(TARGET_NAME)/Distribution/ProductDefinition.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
