@@ -185,6 +185,7 @@
 				C471F6AB2165F34E0031CF18 /* Frameworks */,
 				C471F6AC2165F34E0031CF18 /* Resources */,
 				68EF1FB93038400DD5F13C6E /* [CP] Embed Pods Frameworks */,
+				82A6C09500C0E2FFAA501957 /* [CP-User] Embed Source Version into Bundle */,
 			);
 			buildRules = (
 			);
@@ -370,6 +371,25 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-URLHelperApp/Pods-URLHelperApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		82A6C09500C0E2FFAA501957 /* [CP-User] Embed Source Version into Bundle */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "[CP-User] Embed Source Version into Bundle";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT:?}\"/GEXcodeBuildPhases/Scripts/EmbedSourceVersionIntoBundle";
 			showEnvVarsInLog = 0;
 		};
 		86370D21EFFA0007740BB3C3 /* [CP] Check Pods Manifest.lock */ = {
