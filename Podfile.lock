@@ -1,10 +1,12 @@
 PODS:
   - GEContinuousIntegration (0.1)
+  - GEXcodeBuildPhases (0.0.1)
   - Result (4.0.0)
   - Then (2.4.0)
 
 DEPENDENCIES:
   - GEContinuousIntegration (from `https://github.com/grigorye/GEContinuousIntegration`, branch `master`)
+  - GEXcodeBuildPhases (from `https://github.com/grigorye/GEXcodeBuildPhases`, branch `master`)
   - Result (~> 4.0.0)
   - Then (~> 2.4.0)
 
@@ -17,17 +19,24 @@ EXTERNAL SOURCES:
   GEContinuousIntegration:
     :branch: master
     :git: https://github.com/grigorye/GEContinuousIntegration
+  GEXcodeBuildPhases:
+    :branch: master
+    :git: https://github.com/grigorye/GEXcodeBuildPhases
 
 CHECKOUT OPTIONS:
   GEContinuousIntegration:
     :commit: 1d484a8462b4dd245c381a0ab5d36a5940cbc761
     :git: https://github.com/grigorye/GEContinuousIntegration
+  GEXcodeBuildPhases:
+    :commit: 99426725bcb6f816e4160970eaf8887b1857f598
+    :git: https://github.com/grigorye/GEXcodeBuildPhases
 
 SPEC CHECKSUMS:
   GEContinuousIntegration: 7169e73e490730fd52a3a452fc85919c48f75567
+  GEXcodeBuildPhases: 2bc1c52b0359b4b85e317fdd8fa621888fee562a
   Result: 7645bb3f50c2ce726dd0ff2fa7b6f42bbe6c3713
   Then: 71866660c7af35a7343831f7668e7cd2b62ee0f2
 
-PODFILE CHECKSUM: ccaa3009b11b3fc310aef5b8cbefbf98d3e47270
+PODFILE CHECKSUM: a9fb82042f6d956a805d52b9c9bed8d979b3550d
 
 COCOAPODS: 1.5.3

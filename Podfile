@@ -13,7 +13,10 @@ target 'URLHelperApp' do
 
   pod 'Then', '~> 2.4.0'
   pod 'Result', '~> 4.0.0'
+  pod 'GEXcodeBuildPhases', :git => 'https://github.com/grigorye/GEXcodeBuildPhases', :branch => 'master'
 
+  script_phase :name => 'Embed Source Version into Bundle', :script => '"${PODS_ROOT:?}"/GEXcodeBuildPhases/Scripts/EmbedSourceVersionIntoBundle'
+  
   target 'URLHelperAppTests' do
     inherit! :search_paths
   end
