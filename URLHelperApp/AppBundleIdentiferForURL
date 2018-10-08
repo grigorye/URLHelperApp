@@ -1,21 +1,21 @@
-#!/bin/sh -x
+#! /bin/sh -x
 
-#  AppBundleIdentiferForURL
-#  URLHelperApp
-#
-#  Created by Grigory Entin on 06/10/2018.
-#  Copyright © 2018 Grigory Entin. All rights reserved.
+# This script defines the rules/acts like a matcher between an url and the corresponding application that is used to open the url.
+# Feel free to modify it as necessary/replace it with something more appropriate.s  
 
 set -eu -o pipefail
 
-url="${1:?}"
-shift
+url="${1:?}"; shift
 
-case "${url:?}" in
-"https://stackoverflow.com/"*)
-	echo "org.epichrome.app.Coding"
-	;;
+# Process redirects before making the "routing" decision.
+redirectedURL=$(curl -Ls -o /dev/null -w '%{url_effective}' "${url:?}" || echo "${url:?}")
+
+# Here were route.
+case "${redirectedURL:?}" in
+#'https://stackoverflow.com/'*)
+#	echo "org.epichrome.app.Coding"
+#	;;
 *)
-	echo "com.google.Chrome"
+	echo 'com.google.Chrome'
 	;;
 esac
