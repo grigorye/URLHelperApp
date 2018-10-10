@@ -3,26 +3,26 @@
 
 # URLHelperApp
 
-A helper app to route http(s) urls to different applications, depending on url content.
+A helper app for script-driven routing of http(s) urls to different applications.
 
 ## Why
 
-macOS has quite limited configuration of url "openers" - it's mostly limited to one app per url scheme. So (by default) it can not route an http(s) url to different apps, depening on the url content.
+macOS has quite limited configuration of url "openers" - it's mostly limited to one app per url scheme. So (by default) it can not route an http(s) url to different apps, depening on the url itself.
 
-Some time ago I discovered the concept of user-generated Chrome SSBs/[Epichrome](https://github.com/dmarmor/epichrome) and believe that those a really cool things - I use them daily and they work great. But when opening an url from other app, that is not browser (read: Mail/iMessage/Slack/Messenger and etc.) to benefit from SSBs, we need to route the url accordingly.
+Some time ago I discovered the concept of user-generated Chrome SSBs/[Epichrome](https://github.com/dmarmor/epichrome) and believe that those are really cool things - I use them daily and they work great. But when opening an url from other app, that is not browser (read: Mail/iMessage/Slack/Messenger and etc.) to benefit from SSBs, we need to route the url accordingly.
 
 URLHelperApp is a possible solution.
 
 ## How
 
-URLHelperApp is basically a very simple "url proxy" app. You configure it as default browser/http(s) handler, and adjust the routing using a simple script, that you're free to define youself. After that, when you try to open an url:
+URLHelperApp is basically a very simple "url proxy" app. You configure it as default browser/http(s) handler, and adjust the routing using a simple script, that you're free to adjust to your needs youself. After that, when you try to open an url:
 
 1. URLHelperApp gets the url.
 2. URLHelperApp invokes the "routing" script with the url as an argument.
 3. The script (currently) outputs the bundle id of the desired app/SSB.
 4. URLHelper asks the app with the bundle to open the url.
 
-The routings script (`AppBundleIdentiferForURL`) should be installed in `~/Library/Application Scripts/com.grigorye.URLHelperApp/`. A sample version of the script will be installed on attempt to open an url (by default it routes everything to Chrome).
+The routings script (`AppBundleIdentiferForURL`) should be installed in `~/Library/Application Scripts/com.grigorye.URLHelperApp/`. A sample version of the script is installed on attempt to open an url (by default it routes everything to Chrome).
 
 ## Alternatives
 
