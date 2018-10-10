@@ -64,6 +64,7 @@
 		C471F6E12167E9F60031CF18 /* ScriptBasedURLToAppMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScriptBasedURLToAppMapper.swift; sourceTree = "<group>"; };
 		C471F6E32168186A0031CF18 /* AppBundleIdentiferForURL */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = AppBundleIdentiferForURL; sourceTree = "<group>"; };
 		C471F6E721681F150031CF18 /* SampleURLToAppMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleURLToAppMapper.swift; sourceTree = "<group>"; };
+		C471F6EB216E928A0031CF18 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +111,7 @@
 		C471F6A52165F34E0031CF18 = {
 			isa = PBXGroup;
 			children = (
+				C471F6EB216E928A0031CF18 /* README.md */,
 				C471F6B02165F34E0031CF18 /* URLHelperApp */,
 				C471F6C32165F3560031CF18 /* URLHelperAppTests */,
 				C471F6CE2165F3560031CF18 /* URLHelperAppUITests */,
