@@ -25,15 +25,15 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   GEContinuousIntegration:
-    :commit: 1d484a8462b4dd245c381a0ab5d36a5940cbc761
+    :commit: e0399b04b5ee113f9830dccadd398a364b71ffcf
     :git: https://github.com/grigorye/GEContinuousIntegration
   GEXcodeBuildPhases:
-    :commit: 99426725bcb6f816e4160970eaf8887b1857f598
+    :commit: a1415ea8b3d0aff720aafe0ccb93d1755c0ee723
     :git: https://github.com/grigorye/GEXcodeBuildPhases
 
 SPEC CHECKSUMS:
   GEContinuousIntegration: 7169e73e490730fd52a3a452fc85919c48f75567
-  GEXcodeBuildPhases: 2bc1c52b0359b4b85e317fdd8fa621888fee562a
+  GEXcodeBuildPhases: 28e6c32ecc266fab2a658c9e0e09c1d3bdb92271
   Result: 7645bb3f50c2ce726dd0ff2fa7b6f42bbe6c3713
   Then: 71866660c7af35a7343831f7668e7cd2b62ee0f2
 
