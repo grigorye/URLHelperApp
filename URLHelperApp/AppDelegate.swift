@@ -6,6 +6,8 @@
 //  Copyright © 2018 Grigory Entin. All rights reserved.
 //
 
+import GEAppConfig
+import GETracing
 import Cocoa
 
 private let urlToAppMapper: URLToAppMapper = ScriptBasedURLToAppMapper()
@@ -14,7 +16,7 @@ private let urlToAppMapper: URLToAppMapper = ScriptBasedURLToAppMapper()
 class AppDelegate : NSObject, NSApplicationDelegate {
     
     func application(_ application: NSApplication, open urls: [URL]) {
-        dump(urls, name: "urls")
+        x$(urls)
         var urlsByAppBundleIdentifier: [String: [URL]] = [:]
         let queryQueue = DispatchQueue.global()
         let resultGroup = DispatchGroup()
@@ -27,8 +29,8 @@ class AppDelegate : NSObject, NSApplicationDelegate {
                         result.analysis(ifSuccess: { (appBundleIdentifier) in
                             urlsByAppBundleIdentifier[appBundleIdentifier, default: []] += [url]
                         }, ifFailure: { error in
-                            dump(error, name: "error")
-                            dump(url, name: "failingURL")
+                            x$(error)
+                            x$(url)
                         })
                         resultGroup.leave()
                     }
@@ -36,16 +38,16 @@ class AppDelegate : NSObject, NSApplicationDelegate {
             }
         }
         resultGroup.notify(queue: .main) {
-            for (appBundleIdentifier, urls) in dump(urlsByAppBundleIdentifier, name: "urlsByAppBundleIdentifier") {
+            for (appBundleIdentifier, urls) in x$(urlsByAppBundleIdentifier) {
                 guard let appURL = workspace.urlForApplication(withBundleIdentifier: appBundleIdentifier) else {
-                    dump(appBundleIdentifier, name: "appBundleIdentifierMissingApp")
+                    x$(appBundleIdentifier)
                     continue
                 }
                 do {
-                    let runningApp = try workspace.open(dump(urls, name: "urlsToOpenWithAppAtURL"), withApplicationAt: dump(appURL, name: "appURL"), options: .withErrorPresentation, configuration: [:])
-                    dump(runningApp, name: "runningApp")
+                    let runningApp = try workspace.open(x$(urls), withApplicationAt: x$(appURL), options: .withErrorPresentation, configuration: [:])
+                    x$(runningApp)
                 } catch {
-                    dump(error, name: "openURLsError")
+                    x$(error)
                 }
             }
         }
