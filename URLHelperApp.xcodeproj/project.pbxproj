@@ -7,8 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		124624F8BC7413C4C48452C2 /* ScriptBasedURLToAppMapper.swift in Embed Sources */ = {isa = PBXBuildFile; fileRef = C471F6E12167E9F60031CF18 /* ScriptBasedURLToAppMapper.swift */; };
+		310331C4F6304B2BC98BC06E /* URLToAppMapper.swift in Embed Sources */ = {isa = PBXBuildFile; fileRef = C471F6DD2166C2E60031CF18 /* URLToAppMapper.swift */; };
+		3359FF5153E8E4F252A7468D /* URLHelperAppUITests.swift in Embed Sources */ = {isa = PBXBuildFile; fileRef = C471F6CF2165F3560031CF18 /* URLHelperAppUITests.swift */; };
+		411E56110A4919207612F951 /* SampleURLToAppMapper.swift in Embed Sources */ = {isa = PBXBuildFile; fileRef = C471F6E721681F150031CF18 /* SampleURLToAppMapper.swift */; };
 		A3369735F9749E9447A04C8E /* Pods_URLHelperApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F3F99E5E9946088E41F1BD6 /* Pods_URLHelperApp.framework */; };
 		A4DFC35409A054D6555A9E5D /* Pods_URLHelperAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6318B34AA32F0174E4B2E529 /* Pods_URLHelperAppUITests.framework */; };
+		B4AEB7BA26857B692693D1D1 /* URLHelperAppTests.swift in Embed Sources */ = {isa = PBXBuildFile; fileRef = C471F6C42165F3560031CF18 /* URLHelperAppTests.swift */; };
 		C471F6B22165F34E0031CF18 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C471F6B12165F34E0031CF18 /* AppDelegate.swift */; };
 		C471F6B62165F3550031CF18 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C471F6B52165F3550031CF18 /* Assets.xcassets */; };
 		C471F6B92165F3550031CF18 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C471F6B72165F3550031CF18 /* Main.storyboard */; };
@@ -18,6 +23,7 @@
 		C471F6E22167E9F60031CF18 /* ScriptBasedURLToAppMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C471F6E12167E9F60031CF18 /* ScriptBasedURLToAppMapper.swift */; };
 		C471F6E621681A380031CF18 /* AppBundleIdentiferForURL in Resources */ = {isa = PBXBuildFile; fileRef = C471F6E32168186A0031CF18 /* AppBundleIdentiferForURL */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		C471F6E821681F150031CF18 /* SampleURLToAppMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C471F6E721681F150031CF18 /* SampleURLToAppMapper.swift */; };
+		C862271BB2827AD011FC6175 /* AppDelegate.swift in Embed Sources */ = {isa = PBXBuildFile; fileRef = C471F6B12165F34E0031CF18 /* AppDelegate.swift */; };
 		E8C15FB7F93A84BBFFE27343 /* Pods_URLHelperAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 506E1D10CE0ED996FA71A152 /* Pods_URLHelperAppTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +43,45 @@
 			remoteInfo = URLHelperApp;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		37012C267647308D4046D2F4 /* Embed Sources */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "Sources/$(TARGET_NAME)";
+			dstSubfolderSpec = 7;
+			files = (
+				C862271BB2827AD011FC6175 /* AppDelegate.swift in Embed Sources */,
+				411E56110A4919207612F951 /* SampleURLToAppMapper.swift in Embed Sources */,
+				124624F8BC7413C4C48452C2 /* ScriptBasedURLToAppMapper.swift in Embed Sources */,
+				310331C4F6304B2BC98BC06E /* URLToAppMapper.swift in Embed Sources */,
+			);
+			name = "Embed Sources";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7BD53FC0E90219D529143577 /* Embed Sources */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "Sources/$(TARGET_NAME)";
+			dstSubfolderSpec = 7;
+			files = (
+				3359FF5153E8E4F252A7468D /* URLHelperAppUITests.swift in Embed Sources */,
+			);
+			name = "Embed Sources";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FAE4E5E624B4A05095308713 /* Embed Sources */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "Sources/$(TARGET_NAME)";
+			dstSubfolderSpec = 7;
+			files = (
+				B4AEB7BA26857B692693D1D1 /* URLHelperAppTests.swift in Embed Sources */,
+			);
+			name = "Embed Sources";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		1D483F6B67828E3C2B9406A3 /* Pods-URLHelperApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-URLHelperApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-URLHelperApp/Pods-URLHelperApp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -65,6 +110,7 @@
 		C471F6E32168186A0031CF18 /* AppBundleIdentiferForURL */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = AppBundleIdentiferForURL; sourceTree = "<group>"; };
 		C471F6E721681F150031CF18 /* SampleURLToAppMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleURLToAppMapper.swift; sourceTree = "<group>"; };
 		C471F6EB216E928A0031CF18 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		C4E9BB9221867EBC001A42B7 /* URLHelperApp-app.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "URLHelperApp-app.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +189,7 @@
 				C471F6B72165F3550031CF18 /* Main.storyboard */,
 				C471F6BA2165F3550031CF18 /* Info.plist */,
 				C471F6BB2165F3550031CF18 /* URLHelperApp.entitlements */,
+				C4E9BB9221867EBC001A42B7 /* URLHelperApp-app.xcconfig */,
 			);
 			path = URLHelperApp;
 			sourceTree = "<group>";
@@ -188,6 +235,8 @@
 				C471F6AC2165F34E0031CF18 /* Resources */,
 				68EF1FB93038400DD5F13C6E /* [CP] Embed Pods Frameworks */,
 				82A6C09500C0E2FFAA501957 /* [CP-User] Embed Source Version into Bundle */,
+				010E819425A7B31D1DF0EEC1 /* [CP-User] Integrate Fabric */,
+				37012C267647308D4046D2F4 /* Embed Sources */,
 			);
 			buildRules = (
 			);
@@ -206,6 +255,7 @@
 				C471F6BC2165F3560031CF18 /* Sources */,
 				C471F6BD2165F3560031CF18 /* Frameworks */,
 				C471F6BE2165F3560031CF18 /* Resources */,
+				FAE4E5E624B4A05095308713 /* Embed Sources */,
 			);
 			buildRules = (
 			);
@@ -225,6 +275,7 @@
 				C471F6C72165F3560031CF18 /* Sources */,
 				C471F6C82165F3560031CF18 /* Frameworks */,
 				C471F6C92165F3560031CF18 /* Resources */,
+				7BD53FC0E90219D529143577 /* Embed Sources */,
 			);
 			buildRules = (
 			);
@@ -307,6 +358,25 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		010E819425A7B31D1DF0EEC1 /* [CP-User] Integrate Fabric */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "[CP-User] Integrate Fabric";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = "/bin/sh -e";
+			shellScript = "\"${GE_XCODE_BUILD_PHASES:?}/IntegrateFabric\"\n";
+			showEnvVarsInLog = 0;
+		};
 		34601F48469545DFBAC4E7D9 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -360,6 +430,8 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-URLHelperApp/Pods-URLHelperApp-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GEFoundation/GEFoundation.framework",
+				"${BUILT_PRODUCTS_DIR}/GETracing/GETracing.framework",
 				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
 				"${BUILT_PRODUCTS_DIR}/Then/Then.framework",
 			);
@@ -367,6 +439,8 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GEFoundation.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GETracing.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Then.framework",
 			);
@@ -390,8 +464,8 @@
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT:?}\"/GEXcodeBuildPhases/Scripts/EmbedSourceVersionIntoBundle";
+			shellPath = "/bin/sh -e";
+			shellScript = "\"${GE_XCODE_BUILD_PHASES:?}/EmbedSourceVersionIntoBundle\"\n";
 			showEnvVarsInLog = 0;
 		};
 		86370D21EFFA0007740BB3C3 /* [CP] Check Pods Manifest.lock */ = {
