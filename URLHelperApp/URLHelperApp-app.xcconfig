@@ -1,0 +1,13 @@
+//
+//  URLHelperApp-app.xcconfig
+//  URLHelperApp
+//
+//  Created by Grigory Entin on 29/10/2018.
+//  Copyright © 2018 Grigory Entin. All rights reserved.
+//
+
+CRASHLYTICS_ENABLED = YES
+
+XC_FABRIC_API_KEY = a041320bf4147ab842dc85b6f431b045c1c49276
+
+GE_VERBOSE = YES
