@@ -14,7 +14,9 @@ private let urlToAppMapper: URLToAppMapper = ScriptBasedURLToAppMapper()
 
 @NSApplicationMain
 class AppDelegate : NSObject, NSApplicationDelegate {
-    
+
+    private let appDelegateBase = AppDelegateBase()
+
     func application(_ application: NSApplication, open urls: [URL]) {
         x$(urls)
         var urlsByAppBundleIdentifier: [String: [URL]] = [:]
