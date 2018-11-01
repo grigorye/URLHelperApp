@@ -6,7 +6,8 @@ build_project:
   script:
     - formulaName="url-helper-app"
     - packageName="${CI_PROJECT_NAME:?}"
-    - ./Pods/GEContinuousIntegration/Scripts/build-gitlab-cmd "$PWD/build" "${packageName:?}" "${formulaName:?}"
+    - signIdentity="3rd Party Mac Developer Installer: Grigorii Entin (465NA5BW7E)"
+    - ./Pods/GEContinuousIntegration/Scripts/build-gitlab-cmd "$PWD/build" "${packageName:?}" "${formulaName:?}" "${signIdentity:?}"
   artifacts:
     paths:
       - build/*.pkg
