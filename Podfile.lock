@@ -87,7 +87,7 @@ CHECKOUT OPTIONS:
     :commit: d1f55b48f185818e0f1bf315646cc4e7372177ee
     :git: https://github.com/grigorye/GEAppConfig
   GEContinuousIntegration:
-    :commit: e0399b04b5ee113f9830dccadd398a364b71ffcf
+    :commit: 9b67fcb5c80b561df3b586638b4b986450b0a176
     :git: https://github.com/grigorye/GEContinuousIntegration
   GETracing:
     :commit: c77d7eae4710b7d1fb7bdc848d5de1c1ff06c44d

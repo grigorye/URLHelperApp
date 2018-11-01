@@ -1,16 +1,22 @@
 #! /bin/sh -xe
 
-set -eu -o pipefail
+set -e -o pipefail
 
 buildDir="${1:?}"; shift
 packageName="${1:?}"; shift
 formulaName="${1:?}"; shift
+signIdentity="${1:?}"; shift
 
 dn=$(dirname "$0")
 
+mkdir "${buildDir:?}"
+
 "$dn"/build-gitlab \
     "${buildDir:?}/${packageName:?}.pkg" \
+    "${buildDir:?}/${packageName:?}-build.log" \
+    "${signIdentity:?}" \
     GE_DERIVED_DATA_PATH="${buildDir:?}"/DerivedData \
-    DSTROOT="${buildDir:?}/${packageName:?}".dst
+    DSTROOT="${buildDir:?}/${packageName:?}".dst \
+    "${@}"
 
 "$dn"/build-gitlab-homebrew-formula "${packageName:?}" "${formulaName:?}"
