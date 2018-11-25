@@ -1,7 +1,7 @@
 PODS:
-  - Crashlytics (3.11.0):
-    - Fabric (~> 1.8.0)
-  - Fabric (1.8.0)
+  - Crashlytics (3.11.1):
+    - Fabric (~> 1.8.1)
+  - Fabric (1.8.2)
   - GEAppConfig/Analytics (0.0.1):
     - FTLinearActivityIndicator
     - GEDebugKit
@@ -40,25 +40,29 @@ PODS:
     - GEUIKit
     - JGProgressHUD
     - Watchdog
-  - GEContinuousIntegration (0.1)
+  - GEContinuousIntegration (0.1.1)
   - GEFoundation (0.1):
     - GETracing (~> 0.1)
-  - GETracing (0.1)
-  - GEXcodeBuildPhases (0.0.1)
+  - GETracing (0.1.1)
+  - GEXcodeBuildPhases (0.0.1):
+    - GEXcodeScripts
   - GEXcodeScripts (0.1)
   - Result (4.0.0)
   - Then (2.4.0)
+  - URLHelperApp (0.1)
 
 DEPENDENCIES:
-  - GEAppConfig/Answers (from `https://github.com/grigorye/GEAppConfig`)
-  - GEAppConfig/Core (from `https://github.com/grigorye/GEAppConfig`)
-  - GEAppConfig/Crashlytics (from `https://github.com/grigorye/GEAppConfig`)
-  - GEContinuousIntegration (from `https://github.com/grigorye/GEContinuousIntegration`, branch `master`)
-  - GETracing (from `https://github.com/grigorye/GETracing`)
-  - GEXcodeBuildPhases (from `https://github.com/grigorye/GEXcodeBuildPhases`)
-  - GEXcodeScripts (from `https://github.com/grigorye/GEXcodeScripts`)
+  - GEAppConfig/Answers
+  - GEAppConfig/Core
+  - GEAppConfig/Crashlytics
+  - GEContinuousIntegration
+  - GEFoundation
+  - GETracing
+  - GEXcodeBuildPhases
+  - GEXcodeScripts
   - Result (~> 4.0.0)
   - Then (~> 2.4.0)
+  - URLHelperApp (from `.`)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -67,50 +71,30 @@ SPEC REPOS:
     - Result
     - Then
   https://github.com/grigorye/podspecs.git:
+    - GEAppConfig
+    - GEContinuousIntegration
     - GEFoundation
+    - GETracing
+    - GEXcodeBuildPhases
+    - GEXcodeScripts
 
 EXTERNAL SOURCES:
-  GEAppConfig:
-    :git: https://github.com/grigorye/GEAppConfig
-  GEContinuousIntegration:
-    :branch: master
-    :git: https://github.com/grigorye/GEContinuousIntegration
-  GETracing:
-    :git: https://github.com/grigorye/GETracing
-  GEXcodeBuildPhases:
-    :git: https://github.com/grigorye/GEXcodeBuildPhases
-  GEXcodeScripts:
-    :git: https://github.com/grigorye/GEXcodeScripts
-
-CHECKOUT OPTIONS:
-  GEAppConfig:
-    :commit: d1f55b48f185818e0f1bf315646cc4e7372177ee
-    :git: https://github.com/grigorye/GEAppConfig
-  GEContinuousIntegration:
-    :commit: 9b67fcb5c80b561df3b586638b4b986450b0a176
-    :git: https://github.com/grigorye/GEContinuousIntegration
-  GETracing:
-    :commit: c77d7eae4710b7d1fb7bdc848d5de1c1ff06c44d
-    :git: https://github.com/grigorye/GETracing
-  GEXcodeBuildPhases:
-    :commit: 728621f72bddcbc3df923df4913ff1c97dd762c9
-    :git: https://github.com/grigorye/GEXcodeBuildPhases
-  GEXcodeScripts:
-    :commit: 99786c9e9de47259793250096694c006bcd3f918
-    :git: https://github.com/grigorye/GEXcodeScripts
+  URLHelperApp:
+    :path: "."
 
 SPEC CHECKSUMS:
-  Crashlytics: 1448070c1d2731ab71ea7c3faf84ac0f69657287
-  Fabric: 4ac1cdfef3004ccd83ce0959b91eda8a6e37df72
-  GEAppConfig: 0ff38c0731ed62443f6074574c2bac4d64457b5f
-  GEContinuousIntegration: 7169e73e490730fd52a3a452fc85919c48f75567
-  GEFoundation: 5c44a58c6bb67b347b889d49cacb5bca1918a00e
-  GETracing: 56ee5bc6832ac4526c8eb9f19ef81713d77f64bc
-  GEXcodeBuildPhases: f1ecf1d0abf9017124662f540563dd8c15e2910e
-  GEXcodeScripts: b1dd6730407428e4ddd72db31fafb259c23799fd
+  Crashlytics: ca7ab4bc304aa216bdc2e4c1a96389ee77252203
+  Fabric: d2b22f443ba195d8a7cc204da230977c72733b40
+  GEAppConfig: 3eb0911feba1d6f8b409b29dbb3de559f8096430
+  GEContinuousIntegration: c8be3f98da613a38102d75c071bc2f206392a494
+  GEFoundation: e035ccce3b81967d59ad05a64a87aad5c37702ac
+  GETracing: 10d925bf3e557093d9c9d36f28397a6e85000fed
+  GEXcodeBuildPhases: f84107cc49a9dd52e856b2dc4cf5eeb64320fc28
+  GEXcodeScripts: 889cb43332b054ff6994d3facb993d188d5965c8
   Result: 7645bb3f50c2ce726dd0ff2fa7b6f42bbe6c3713
   Then: 71866660c7af35a7343831f7668e7cd2b62ee0f2
+  URLHelperApp: 3a379a053948a0be1831fa70fb26283ab21bc4ef
 
-PODFILE CHECKSUM: 3168ce9b4b6a7d3a6a5ba2f2b1dc9ff481b88b29
+PODFILE CHECKSUM: 1a6be1ac5a179a869993671c43f465a3df120408
 
 COCOAPODS: 1.5.3

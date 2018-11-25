@@ -5,8 +5,7 @@ platform :osx, '10.13'
 
 project "URLHelperApp.xcodeproj"
 
-pod 'GEContinuousIntegration', :git => 'https://github.com/grigorye/GEContinuousIntegration', :branch => 'master'
-#pod 'GEContinuousIntegration', :path => '../GEContinuousIntegration'
+pod 'GEContinuousIntegration' #, :path => '../GEContinuousIntegration'
 
 ###
 
@@ -39,22 +38,18 @@ target 'URLHelperApp' do
   pod 'Then', '~> 2.4.0'
   pod 'Result', '~> 4.0.0'
 
-  pod 'GEAppConfig/Core', :git => 'https://github.com/grigorye/GEAppConfig'
-  pod 'GEAppConfig/Crashlytics', :git => 'https://github.com/grigorye/GEAppConfig'
-  pod 'GEAppConfig/Answers', :git => 'https://github.com/grigorye/GEAppConfig'
-  # pod 'GEAppConfig/Core', :path => '../GEAppConfig'
-  # pod 'GEAppConfig/Crashlytics', :path => '../GEAppConfig'
-  # pod 'GEAppConfig/Answers', :path => '../GEAppConfig'
+  pod 'URLHelperApp', :path => '.'
+  pod 'GEAppConfig', :subspecs => ['Core', 'Crashlytics', 'Answers']#, :path => '../GEAppConfig'
 
-  pod 'GETracing', :git => 'https://github.com/grigorye/GETracing'
-  # pod 'GETracing', :path => '../GETracing'
+  pod 'GETracing' #, :path => '../GETracing'
   inject_pod_dir_as_xcconfig_var('GE_TRACING_POD_ROOT', 'GETracing')
 
-  pod 'GEXcodeScripts', :git => 'https://github.com/grigorye/GEXcodeScripts'
+  pod 'GEFoundation' #, :path => '../GEFoundation'
+
+  pod 'GEXcodeScripts'
   inject_pod_dir_as_xcconfig_var('GE_XCODE_SCRIPTS_POD_ROOT', 'GEXcodeScripts')
 
-  pod 'GEXcodeBuildPhases', :git => 'https://github.com/grigorye/GEXcodeBuildPhases'
-  # pod 'GEXcodeBuildPhases', :path => '../GEXcodeBuildPhases'
+  pod 'GEXcodeBuildPhases' #, :path => '../GEXcodeBuildPhases'
   inject_pod_dir_as_xcconfig_var('GE_XCODE_BUILD_PHASES_POD_ROOT', 'GEXcodeBuildPhases')
   script_phase :name => 'Integrate Fabric', :shell_path => '/bin/sh -e', :script => <<~END
     "${GE_XCODE_BUILD_PHASES:?}/IntegrateFabric"
