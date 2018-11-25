@@ -6,6 +6,7 @@
 //  Copyright © 2018 Grigory Entin. All rights reserved.
 //
 
+import GETracing
 import Result
 import Then
 import Foundation
@@ -36,12 +37,16 @@ class ScriptBasedURLToAppMapper : URLToAppMapper {
             case badTerminationReason(Process.TerminationReason)
             case badTerminationStatus(Int32)
         }
-        let pipe = Pipe()
+        let standardOutputPipe = Pipe()
+        let standardErrorPipe = Pipe()
         let process = Process().then {
             $0.executableURL = instantiatedResolverURL
             $0.arguments = [url.absoluteString]
-            $0.standardOutput = pipe
+            $0.standardOutput = standardOutputPipe
+            $0.standardError = standardErrorPipe
             $0.terminationHandler = { process in
+                let standardErrorData = standardErrorPipe.fileHandleForReading.readDataToEndOfFile()
+				x$(.multiline(standardErrorData))
                 let terminationReason = process.terminationReason
                 guard case .exit = terminationReason else {
                     completionHandler(.failure(AnyError(Error.badTerminationReason(terminationReason))))
@@ -52,7 +57,7 @@ class ScriptBasedURLToAppMapper : URLToAppMapper {
                     completionHandler(.failure(AnyError(Error.badTerminationStatus(terminationStatus))))
                     return
                 }
-                let data = pipe.fileHandleForReading.readDataToEndOfFile()
+                let data = standardOutputPipe.fileHandleForReading.readDataToEndOfFile()
                 let appBundleIdentifier = String(data: data, encoding: .utf8)!.trimmingCharacters(in: .controlCharacters)
                 completionHandler(.success(appBundleIdentifier))
             }
