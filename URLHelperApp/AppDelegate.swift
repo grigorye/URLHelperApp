@@ -7,8 +7,30 @@
 //
 
 import GEAppConfig
+import GEFoundation
 import GETracing
 import Cocoa
+
+extension TypedUserDefaults {
+    
+    @NSManaged var openMethod: String?
+    
+    enum OpenMethod : String {
+        case openURLsWithAppBundleIdentifier
+        case openURLsWithApplicationAtURL
+    }
+	
+    var openMethodValue: OpenMethod? {
+        guard let rawValue = defaults.openMethod else {
+            return nil
+        }
+        return OpenMethod(rawValue: rawValue)
+    }
+}
+
+extension TypedUserDefaults.OpenMethod {
+	static let `default`: TypedUserDefaults.OpenMethod = .openURLsWithApplicationAtURL
+}
 
 private let urlToAppMapper: URLToAppMapper = ScriptBasedURLToAppMapper()
 
@@ -41,15 +63,20 @@ class AppDelegate : NSObject, NSApplicationDelegate {
         }
         resultGroup.notify(queue: .main) {
             for (appBundleIdentifier, urls) in x$(urlsByAppBundleIdentifier) {
-                guard let appURL = workspace.urlForApplication(withBundleIdentifier: appBundleIdentifier) else {
-                    x$(appBundleIdentifier)
-                    continue
-                }
-                do {
-                    let runningApp = try workspace.open(x$(urls), withApplicationAt: x$(appURL), options: .withErrorPresentation, configuration: [:])
-                    x$(runningApp)
-                } catch {
-                    x$(error)
+                switch defaults.openMethodValue ?? .default {
+                case .openURLsWithAppBundleIdentifier:
+                    workspace.open(urls, withAppBundleIdentifier: appBundleIdentifier, options: .withErrorPresentation, additionalEventParamDescriptor: nil, launchIdentifiers: nil)
+                case .openURLsWithApplicationAtURL:
+                    guard let appURL = workspace.urlForApplication(withBundleIdentifier: appBundleIdentifier) else {
+                        x$(appBundleIdentifier)
+                        continue
+                    }
+                    do {
+                        let runningApp = try workspace.open(x$(urls), withApplicationAt: x$(appURL), options: .withErrorPresentation, configuration: [:])
+                        x$(runningApp)
+                    } catch {
+                        x$(error)
+                    }
                 }
             }
         }
