@@ -41,15 +41,15 @@ target 'URLHelperApp' do
   pod 'URLHelperApp', :path => '.'
   pod 'GEAppConfig', :subspecs => ['Core', 'Crashlytics', 'Answers']#, :path => '../GEAppConfig'
 
-  pod 'GETracing' #, :path => '../GETracing'
+  pod 'GETracing'#, :path => '../GETracing'
   inject_pod_dir_as_xcconfig_var('GE_TRACING_POD_ROOT', 'GETracing')
 
-  pod 'GEFoundation' #, :path => '../GEFoundation'
+  pod 'GEFoundation'#, :path => '../GEFoundation'
 
   pod 'GEXcodeScripts'
   inject_pod_dir_as_xcconfig_var('GE_XCODE_SCRIPTS_POD_ROOT', 'GEXcodeScripts')
 
-  pod 'GEXcodeBuildPhases' #, :path => '../GEXcodeBuildPhases'
+  pod 'GEXcodeBuildPhases'#, :path => '../GEXcodeBuildPhases'
   inject_pod_dir_as_xcconfig_var('GE_XCODE_BUILD_PHASES_POD_ROOT', 'GEXcodeBuildPhases')
   script_phase :name => 'Integrate Fabric', :shell_path => '/bin/sh -e', :script => <<~END
     "${GE_XCODE_BUILD_PHASES:?}/IntegrateFabric"
