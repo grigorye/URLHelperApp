@@ -37,7 +37,10 @@ private let urlToAppMapper: URLToAppMapper = ScriptBasedURLToAppMapper()
 @NSApplicationMain
 class AppDelegate : NSObject, NSApplicationDelegate {
 
-    private let appDelegateBase = AppDelegateBase()
+	private let appDelegateBase: AppDelegateBase = {
+		_ = initializeDefaults
+		return AppDelegateBase()
+	}()
 
     func application(_ application: NSApplication, open urls: [URL]) {
         x$(urls)
@@ -84,3 +87,9 @@ class AppDelegate : NSObject, NSApplicationDelegate {
 }
 
 private let workspace = NSWorkspace()
+
+let initializeDefaults: Void = {
+	traceEnabledEnforced = true
+	sourceLabelsEnabledEnforced = true
+	x$(())
+}()
