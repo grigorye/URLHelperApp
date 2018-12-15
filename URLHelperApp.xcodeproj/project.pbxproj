@@ -281,6 +281,11 @@
 				TargetAttributes = {
 					C471F6AD2165F34E0031CF18 = {
 						CreatedOnToolsVersion = 10.0;
+						SystemCapabilities = {
+							com.apple.HardenedRuntime = {
+								enabled = 1;
+							};
+						};
 					};
 					C471F6BF2165F3560031CF18 = {
 						CreatedOnToolsVersion = 10.0;
@@ -677,6 +682,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 465NA5BW7E;
+				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = URLHelperApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -699,6 +705,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 465NA5BW7E;
+				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = URLHelperApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
