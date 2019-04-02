@@ -88,22 +88,50 @@ private func open(_ urls: [URL], withAppWithBundleIdentifier appBundleIdentifier
     
     switch defaults.openMethodValue ?? .default {
     case .openURLsWithAppBundleIdentifier:
-        workspace.open(urls, withAppBundleIdentifier: appBundleIdentifier, options: .withErrorPresentation, additionalEventParamDescriptor: nil, launchIdentifiers: nil)
+        open(urls: urls, withAppWithBundleIdentifier: appBundleIdentifier)
     case .openURLsWithApplicationAtURL:
-        guard let appURL = resolveAppURL(forBundleIdentifier: appBundleIdentifier) else {
-            return
-        }
-        open(urls: urls, withAppAtURL: appURL)
+        open(urls: urls, resolvingAppWithBundleIdentifier: appBundleIdentifier)
     }
+}
+
+struct OpenURLsWithAppWithBundleIdentifier : Action {
+    typealias Input = (urls: [URL], appBundleIdentifier: String)
+    typealias SuccessResult = ()
+    typealias FailureResult = Error
+
+    enum Error: Swift.Error {
+        case workspaceFailedToOpenApp
+    }
+}
+
+private func open(urls: [URL], withAppWithBundleIdentifier appBundleIdentifier: String) {
+    
+    let action = OpenURLsWithAppWithBundleIdentifier()
+    track(will: action, with: (urls: urls, appBundleIdentifier: appBundleIdentifier))
+    let succeeded = workspace.open(urls, withAppBundleIdentifier: appBundleIdentifier, options: .withErrorPresentation, additionalEventParamDescriptor: nil, launchIdentifiers: nil)
+    if succeeded {
+        track(succeeded: action, with: ())
+    } else {
+        track(failed: action, due: .workspaceFailedToOpenApp)
+    }
+}
+
+private func open(urls: [URL], resolvingAppWithBundleIdentifier appBundleIdentifier: String) {
+    
+    guard let appURL = resolveAppURL(forBundleIdentifier: appBundleIdentifier) else {
+        return
+    }
+    open(urls: urls, withAppAtURL: appURL)
+}
+
+struct OpenURLsWithAppAtURL : Action {
+    typealias Input = (urls: [URL], appURL: URL)
+    typealias SuccessResult = (NSRunningApplication)
+    typealias FailureResult = Error
 }
 
 private func open(urls: [URL], withAppAtURL appURL: URL) {
     
-    struct OpenURLsWithAppAtURL : Action {
-        typealias Input = (urls: [URL], appURL: URL)
-        typealias SuccessResult = (NSRunningApplication)
-        typealias FailureResult = Error
-    }
     let action = OpenURLsWithAppAtURL()
     track(will: action, with: (urls: urls, appURL: appURL))
     do {
@@ -114,20 +142,22 @@ private func open(urls: [URL], withAppAtURL appURL: URL) {
     }
 }
 
-private func resolveAppURL(forBundleIdentifier bundleIdentifier: String) -> URL? {
+struct ResolveAppForBundleIdentifier : Action {
+    typealias Input = String
+    typealias SuccessResult = URL
+    typealias FailureResult = Error
     
-    struct ResolveAppForBundleIdentifier : Action {
-        typealias Input = String
-        typealias SuccessResult = URL
-        typealias FailureResult = Error
-    }
     enum Error: Swift.Error {
         case couldNotLocateApplication(bundleIdentifier: String)
     }
+}
+
+private func resolveAppURL(forBundleIdentifier bundleIdentifier: String) -> URL? {
+    
     let action = ResolveAppForBundleIdentifier()
     track(will: action, with: bundleIdentifier)
     guard let appURL = workspace.urlForApplication(withBundleIdentifier: bundleIdentifier) else {
-        track(failed: action, due: Error.couldNotLocateApplication(bundleIdentifier: bundleIdentifier))
+        track(failed: action, due: .couldNotLocateApplication(bundleIdentifier: bundleIdentifier))
         return nil
     }
     track(succeeded: action, with: appURL)
