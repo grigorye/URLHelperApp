@@ -18,19 +18,19 @@ enum ActionEvent<T: Action> {
     case failed(T.Type, due: T.FailureResult)
 }
 
-func track<T>(_ event: ActionEvent<T>) {
-    print(event)
-}
 func track<T>(will action: T, with input: T.Input) where T: Action {
     let event = ActionEvent<T>.will(type(of: action), with: input)
-    print(event)
+    track(event)
 }
 func track<T>(succeeded action: T, with result: T.SuccessResult) where T: Action {
     let event = ActionEvent<T>.succeeded(type(of: action), with: result)
-    print(event)
+    track(event)
 }
 func track<T>(failed action: T, due: T.FailureResult) where T: Action {
     let event = ActionEvent<T>.failed(type(of: action), due: due)
-    print(event)
+    track(event)
 }
 
+private func track<T>(_ event: ActionEvent<T>) {
+    print(event)
+}
