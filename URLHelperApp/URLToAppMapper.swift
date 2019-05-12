@@ -6,15 +6,10 @@
 //  Copyright © 2018 Grigory Entin. All rights reserved.
 //
 
-import Result
 import Foundation
-
-typealias _Result<T> = Result<T, AnyError>
 
 protocol URLToAppMapper {
     
-    typealias Result<T> = _Result<T>
-    
-    func appBundleIdentifierFor(_ url: URL, completionHandler: @escaping (Result<String>) -> Void)
+    func appBundleIdentifierFor(_ url: URL, completionHandler: @escaping (Result<String, Error>) -> Void)
 }
 

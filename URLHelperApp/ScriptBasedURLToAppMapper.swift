@@ -7,7 +7,6 @@
 //
 
 import GETracing
-import Result
 import Then
 import Foundation
 
@@ -32,7 +31,7 @@ class ScriptBasedURLToAppMapper : URLToAppMapper {
         return bundle.url(forResource: resolverScriptName, withExtension: "")!
     }
     
-    func appBundleIdentifierFor(_ url: URL, completionHandler: @escaping (Result<String, AnyError>) -> Void) {
+    func appBundleIdentifierFor(_ url: URL, completionHandler: @escaping (Result<String, Error>) -> Void) {
         enum Error : Swift.Error {
             case badTerminationReason(Process.TerminationReason)
             case badTerminationStatus(Int32)
@@ -49,12 +48,12 @@ class ScriptBasedURLToAppMapper : URLToAppMapper {
 				x$(.multiline(standardErrorData))
                 let terminationReason = process.terminationReason
                 guard case .exit = terminationReason else {
-                    completionHandler(.failure(AnyError(Error.badTerminationReason(terminationReason))))
+                    completionHandler(.failure(Error.badTerminationReason(terminationReason)))
                     return
                 }
                 let terminationStatus = process.terminationStatus
                 guard 0 == terminationStatus else {
-                    completionHandler(.failure(AnyError(Error.badTerminationStatus(terminationStatus))))
+                    completionHandler(.failure(Error.badTerminationStatus(terminationStatus)))
                     return
                 }
                 let data = standardOutputPipe.fileHandleForReading.readDataToEndOfFile()
@@ -66,7 +65,7 @@ class ScriptBasedURLToAppMapper : URLToAppMapper {
             try process.run()
             process.waitUntilExit()
         } catch {
-            completionHandler(.failure(AnyError(error)))
+            completionHandler(.failure(error))
         }
     }
 }

@@ -22,7 +22,7 @@ extension String {
 
 class SampleURLToAppMapper : URLToAppMapper {
     
-    func appBundleIdentifierFor(_ url: URL, completionHandler: @escaping (Result<String>) -> Void) {
+    func appBundleIdentifierFor(_ url: URL, completionHandler: @escaping (Result<String, Error>) -> Void) {
         let urlString = url.absoluteString
         let appBundleIdentifier = urlString.matchingAppBundleIdentifier()
         
