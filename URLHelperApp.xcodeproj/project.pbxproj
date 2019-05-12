@@ -425,7 +425,6 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-URLHelperApp/Pods-URLHelperApp-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/GEFoundation/GEFoundation.framework",
 				"${BUILT_PRODUCTS_DIR}/GETracing/GETracing.framework",
-				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
 				"${BUILT_PRODUCTS_DIR}/Then/Then.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -434,7 +433,6 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GEFoundation.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GETracing.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Then.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
