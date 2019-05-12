@@ -10,7 +10,6 @@ import GEAppConfig
 import GEFoundation
 import GETracing
 import Cocoa
-import Result
 
 extension TypedUserDefaults {
     
@@ -46,18 +45,19 @@ class AppDelegate : NSObject, NSApplicationDelegate {
     func application(_ application: NSApplication, open urls: [URL]) {
         x$(urls)
         resolve(urls) { result in
-            result.analysis(ifSuccess: { (urlsByAppBundleIdentifier) in
+            do {
+                let urlsByAppBundleIdentifier = try result.get()
                 for (appBundleIdentifier, urls) in urlsByAppBundleIdentifier {
-                    open(urls, withAppWithBundleIdentifier: appBundleIdentifier)
+                    try open(urls, withAppWithBundleIdentifier: appBundleIdentifier)
                 }
-            }, ifFailure: { error in
-                
-            })
+            } catch {
+                x$(error)
+            }
         }
     }
 }
 
-private func resolve(_ urls: [URL], completion: @escaping (Result<[String: [URL]], AnyError>) -> Void) {
+private func resolve(_ urls: [URL], completion: @escaping (Result<[String: [URL]], Error>) -> Void) {
     
     var urlsByAppBundleIdentifier: [String: [URL]] = [:]
     let resultGroup = DispatchGroup()
@@ -68,12 +68,13 @@ private func resolve(_ urls: [URL], completion: @escaping (Result<[String: [URL]
         queryQueue.async {
             urlToAppMapper.appBundleIdentifierFor(url) { result in
                 resultQueue.async {
-                    result.analysis(ifSuccess: { (appBundleIdentifier) in
+                    do {
+                        let appBundleIdentifier = try result.get()
                         urlsByAppBundleIdentifier[appBundleIdentifier, default: []] += [url]
-                    }, ifFailure: { error in
+                    } catch {
                         x$(error)
                         x$(url)
-                    })
+                    }
                     resultGroup.leave()
                 }
             }
@@ -84,13 +85,13 @@ private func resolve(_ urls: [URL], completion: @escaping (Result<[String: [URL]
     }
 }
 
-private func open(_ urls: [URL], withAppWithBundleIdentifier appBundleIdentifier: String) {
+private func open(_ urls: [URL], withAppWithBundleIdentifier appBundleIdentifier: String) throws {
     
     switch defaults.openMethodValue ?? .default {
     case .openURLsWithAppBundleIdentifier:
         open(urls: urls, withAppWithBundleIdentifier: appBundleIdentifier)
     case .openURLsWithApplicationAtURL:
-        open(urls: urls, resolvingAppWithBundleIdentifier: appBundleIdentifier)
+        try open(urls: urls, resolvingAppWithBundleIdentifier: appBundleIdentifier)
     }
 }
 
@@ -116,11 +117,9 @@ private func open(urls: [URL], withAppWithBundleIdentifier appBundleIdentifier: 
     }
 }
 
-private func open(urls: [URL], resolvingAppWithBundleIdentifier appBundleIdentifier: String) {
+private func open(urls: [URL], resolvingAppWithBundleIdentifier appBundleIdentifier: String) throws {
     
-    guard let appURL = resolveAppURL(forBundleIdentifier: appBundleIdentifier) else {
-        return
-    }
+    let appURL = try resolveAppURL(forBundleIdentifier: appBundleIdentifier)
     open(urls: urls, withAppAtURL: appURL)
 }
 
@@ -146,21 +145,31 @@ struct ResolveAppForBundleIdentifier : Action {
     typealias Input = String
     typealias SuccessResult = URL
     typealias FailureResult = Error
+}
+
+private func resolveAppURL(forBundleIdentifier bundleIdentifier: String) throws -> URL {
+    
+    let action = ResolveAppForBundleIdentifier()
+    track(will: action, with: bundleIdentifier)
+    do {
+        let appURL = try resolveAppURLWithWorkspace(forBundleIdentifier: bundleIdentifier)
+        track(succeeded: action, with: appURL)
+        return appURL
+    } catch {
+        track(failed: action, due: error)
+        throw error
+    }
+}
+
+private func resolveAppURLWithWorkspace(forBundleIdentifier bundleIdentifier: String) throws -> URL {
     
     enum Error: Swift.Error {
         case couldNotLocateApplication(bundleIdentifier: String)
     }
-}
 
-private func resolveAppURL(forBundleIdentifier bundleIdentifier: String) -> URL? {
-    
-    let action = ResolveAppForBundleIdentifier()
-    track(will: action, with: bundleIdentifier)
     guard let appURL = workspace.urlForApplication(withBundleIdentifier: bundleIdentifier) else {
-        track(failed: action, due: .couldNotLocateApplication(bundleIdentifier: bundleIdentifier))
-        return nil
+        throw Error.couldNotLocateApplication(bundleIdentifier: bundleIdentifier)
     }
-    track(succeeded: action, with: appURL)
     return appURL
 }
 
