@@ -1,7 +1,7 @@
 PODS:
-  - Crashlytics (3.12.0):
-    - Fabric (~> 1.9.0)
-  - Fabric (1.9.0)
+  - Crashlytics (3.13.0):
+    - Fabric (~> 1.10.0)
+  - Fabric (1.10.0)
   - GEAppConfig/Analytics (0.0.1):
     - FTLinearActivityIndicator
     - GEDebugKit
@@ -40,14 +40,13 @@ PODS:
     - GEUIKit
     - JGProgressHUD
     - Watchdog
-  - GEContinuousIntegration (0.1.1)
-  - GEFoundation (0.1):
+  - GEContinuousIntegration (0.1.3)
+  - GEFoundation (0.1.1):
     - GETracing (~> 0.1)
-  - GETracing (0.1.1)
+  - GETracing (0.1.2)
   - GEXcodeBuildPhases (0.0.1):
     - GEXcodeScripts
   - GEXcodeScripts (0.1)
-  - Result (4.0.0)
   - Then (2.4.0)
   - URLHelperApp (0.1)
 
@@ -60,7 +59,6 @@ DEPENDENCIES:
   - GETracing
   - GEXcodeBuildPhases
   - GEXcodeScripts
-  - Result (~> 4.0.0)
   - Then (~> 2.4.0)
   - URLHelperApp (from `.`)
 
@@ -68,7 +66,6 @@ SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Crashlytics
     - Fabric
-    - Result
     - Then
   https://github.com/grigorye/podspecs.git:
     - GEAppConfig
@@ -83,18 +80,17 @@ EXTERNAL SOURCES:
     :path: "."
 
 SPEC CHECKSUMS:
-  Crashlytics: 07fb167b1694128c1c9a5a5cc319b0e9c3ca0933
-  Fabric: f988e33c97f08930a413e08123064d2e5f68d655
+  Crashlytics: 1f5f752c7feac0add0cc1774756f96444fa3b1a7
+  Fabric: 09de1e053eb7dc415593166ad3e53d4c88123405
   GEAppConfig: 9f4ac5a10f210376fdde2eac3f78097c02a90cbc
-  GEContinuousIntegration: c8be3f98da613a38102d75c071bc2f206392a494
-  GEFoundation: e035ccce3b81967d59ad05a64a87aad5c37702ac
-  GETracing: 10d925bf3e557093d9c9d36f28397a6e85000fed
+  GEContinuousIntegration: e3bd2ef1ae39d232a8525cb098b016f79437f59e
+  GEFoundation: 39c91037bcb7439f9345586985124e0ce53e0b70
+  GETracing: 241966698cc91e5f29a8fc19c5a2197a83801802
   GEXcodeBuildPhases: a574d19bbb0c7b4ff6a25ee119e358618e2e4276
   GEXcodeScripts: 889cb43332b054ff6994d3facb993d188d5965c8
-  Result: 7645bb3f50c2ce726dd0ff2fa7b6f42bbe6c3713
   Then: 71866660c7af35a7343831f7668e7cd2b62ee0f2
   URLHelperApp: 3a379a053948a0be1831fa70fb26283ab21bc4ef
 
-PODFILE CHECKSUM: 39b3509055d8e454dcdc866c2b836e54d8be83bf
+PODFILE CHECKSUM: 657bc29d7f095bfb03890bf3ee4f545bb0a64294
 
 COCOAPODS: 1.5.3
