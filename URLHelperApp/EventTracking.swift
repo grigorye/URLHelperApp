@@ -6,6 +6,8 @@
 //  Copyright © 2019 Grigory Entin. All rights reserved.
 //
 
+import os.log
+
 protocol Action {
     associatedtype Input
     associatedtype SuccessResult
@@ -32,5 +34,6 @@ func track<T>(failed action: T, due: T.FailureResult) where T: Action {
 }
 
 private func track<T>(_ event: ActionEvent<T>) {
-    print(event)
+    let eventDescription = "\(event)"
+    os_log("%{public}@", eventDescription)
 }
