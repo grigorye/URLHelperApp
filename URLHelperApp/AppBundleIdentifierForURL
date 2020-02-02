@@ -1,17 +1,17 @@
 #! /bin/sh -x
 
 # This script defines the rules/acts like a matcher between an url and the corresponding application that is used to open the url.
-# Feel free to modify it as necessary/replace it with something more appropriate.s  
+# Feel free to modify it as necessary/replace it with something more appropriate.
 
 set -eu -o pipefail
 
-url="${1:?}"; shift
+url="$1"; shift
 
 # Process redirects before making the "routing" decision.
-redirectedURL=$(curl -Ls -o /dev/null -w '%{url_effective}' "${url:?}" || echo "${url:?}")
+redirectedURL=$(curl -Ls -o /dev/null -w '%{url_effective}' "$url" || echo "$url")
 
 # Here were route.
-case "${redirectedURL:?}" in
+case "$redirectedURL" in
 #'https://stackoverflow.com/'*)
 #	echo "org.epichrome.app.Coding"
 #	;;
