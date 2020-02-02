@@ -63,10 +63,6 @@ DEPENDENCIES:
   - URLHelperApp (from `.`)
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
-    - Crashlytics
-    - Fabric
-    - Then
   https://github.com/grigorye/podspecs.git:
     - GEAppConfig
     - GEContinuousIntegration
@@ -74,6 +70,10 @@ SPEC REPOS:
     - GETracing
     - GEXcodeBuildPhases
     - GEXcodeScripts
+  trunk:
+    - Crashlytics
+    - Fabric
+    - Then
 
 EXTERNAL SOURCES:
   URLHelperApp:
@@ -89,8 +89,8 @@ SPEC CHECKSUMS:
   GEXcodeBuildPhases: a574d19bbb0c7b4ff6a25ee119e358618e2e4276
   GEXcodeScripts: 889cb43332b054ff6994d3facb993d188d5965c8
   Then: 71866660c7af35a7343831f7668e7cd2b62ee0f2
-  URLHelperApp: 3a379a053948a0be1831fa70fb26283ab21bc4ef
+  URLHelperApp: 515cbc8f1c2e047ff782f0f094d1c11ed62117eb
 
-PODFILE CHECKSUM: 538ea800411d31f3ebd9ac61d2537e2892199076
+PODFILE CHECKSUM: a237291840c5f098e61f055a8c9dab4174b0af31
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.8.4
