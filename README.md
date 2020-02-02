@@ -22,7 +22,7 @@ URLHelperApp is basically a very simple "url proxy" app. You configure it as def
 3. The script (currently) outputs the bundle id of the desired app/SSB.
 4. URLHelper asks the app with the bundle to open the url.
 
-The routings script (`AppBundleIdentiferForURL`) should be installed in `~/Library/Application Scripts/com.grigorye.URLHelperApp/`. A sample version of the script is installed on attempt to open an url (by default it routes everything to Chrome).
+The routings script (`AppBundleIdentifierForURL`) should be installed in `~/Library/Application Scripts/com.grigorye.URLHelperApp/`. A sample version of the script is installed on attempt to open an url (by default it routes everything to Chrome).
 
 ## Alternatives
 

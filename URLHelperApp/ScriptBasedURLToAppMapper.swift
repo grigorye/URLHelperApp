@@ -13,7 +13,7 @@ import Foundation
 class ScriptBasedURLToAppMapper : URLToAppMapper {
     
     let fileManager = FileManager()
-    let resolverScriptName = "AppBundleIdentiferForURL"
+    let resolverScriptName = "AppBundleIdentifierForURL"
     
     var resolverURL: URL {
         let scriptsDirectoryURL: URL = try! fileManager.url(for: .applicationScriptsDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
