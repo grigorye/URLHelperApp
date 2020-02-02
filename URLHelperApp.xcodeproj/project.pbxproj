@@ -19,7 +19,7 @@
 		C471F6D02165F3560031CF18 /* URLHelperAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C471F6CF2165F3560031CF18 /* URLHelperAppUITests.swift */; };
 		C471F6DE2166C2E60031CF18 /* URLToAppMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C471F6DD2166C2E60031CF18 /* URLToAppMapper.swift */; };
 		C471F6E22167E9F60031CF18 /* ScriptBasedURLToAppMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C471F6E12167E9F60031CF18 /* ScriptBasedURLToAppMapper.swift */; };
-		C471F6E621681A380031CF18 /* AppBundleIdentiferForURL in Resources */ = {isa = PBXBuildFile; fileRef = C471F6E32168186A0031CF18 /* AppBundleIdentiferForURL */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		C471F6E621681A380031CF18 /* AppBundleIdentifierForURL in Resources */ = {isa = PBXBuildFile; fileRef = C471F6E32168186A0031CF18 /* AppBundleIdentifierForURL */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		C471F6E821681F150031CF18 /* SampleURLToAppMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C471F6E721681F150031CF18 /* SampleURLToAppMapper.swift */; };
 		E8C15FB7F93A84BBFFE27343 /* Pods_URLHelperAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 506E1D10CE0ED996FA71A152 /* Pods_URLHelperAppTests.framework */; };
 /* End PBXBuildFile section */
@@ -91,7 +91,7 @@
 		C471F6D12165F3560031CF18 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C471F6DD2166C2E60031CF18 /* URLToAppMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLToAppMapper.swift; sourceTree = "<group>"; };
 		C471F6E12167E9F60031CF18 /* ScriptBasedURLToAppMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScriptBasedURLToAppMapper.swift; sourceTree = "<group>"; };
-		C471F6E32168186A0031CF18 /* AppBundleIdentiferForURL */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = AppBundleIdentiferForURL; sourceTree = "<group>"; };
+		C471F6E32168186A0031CF18 /* AppBundleIdentifierForURL */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = AppBundleIdentifierForURL; sourceTree = "<group>"; };
 		C471F6E721681F150031CF18 /* SampleURLToAppMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleURLToAppMapper.swift; sourceTree = "<group>"; };
 		C471F6EB216E928A0031CF18 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		C4E9BB9221867EBC001A42B7 /* URLHelperApp-app.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "URLHelperApp-app.xcconfig"; sourceTree = "<group>"; };
@@ -167,7 +167,7 @@
 				C471F6E12167E9F60031CF18 /* ScriptBasedURLToAppMapper.swift */,
 				C471F6E721681F150031CF18 /* SampleURLToAppMapper.swift */,
 				C471F6DD2166C2E60031CF18 /* URLToAppMapper.swift */,
-				C471F6E32168186A0031CF18 /* AppBundleIdentiferForURL */,
+				C471F6E32168186A0031CF18 /* AppBundleIdentifierForURL */,
 				C471F6B12165F34E0031CF18 /* AppDelegate.swift */,
 				A1EC6376223581B20028B68C /* EventTracking.swift */,
 				C471F6B52165F3550031CF18 /* Assets.xcassets */,
@@ -330,7 +330,7 @@
 			files = (
 				C471F6B62165F3550031CF18 /* Assets.xcassets in Resources */,
 				C471F6B92165F3550031CF18 /* Main.storyboard in Resources */,
-				C471F6E621681A380031CF18 /* AppBundleIdentiferForURL in Resources */,
+				C471F6E621681A380031CF18 /* AppBundleIdentifierForURL in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -356,15 +356,7 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
 			name = "[CP-User] Integrate Fabric";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = "/bin/sh -e";
 			shellScript = "\"${GE_XCODE_BUILD_PHASES:?}/IntegrateFabric\"\n";
@@ -419,17 +411,13 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-URLHelperApp/Pods-URLHelperApp-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-URLHelperApp/Pods-URLHelperApp-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/GEFoundation/GEFoundation.framework",
 				"${BUILT_PRODUCTS_DIR}/GETracing/GETracing.framework",
 				"${BUILT_PRODUCTS_DIR}/Then/Then.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GEFoundation.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GETracing.framework",
@@ -437,7 +425,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-URLHelperApp/Pods-URLHelperApp-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-URLHelperApp/Pods-URLHelperApp-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		82A6C09500C0E2FFAA501957 /* [CP-User] Embed Source Version into Bundle */ = {
@@ -445,15 +433,7 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
 			name = "[CP-User] Embed Source Version into Bundle";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = "/bin/sh -e";
 			shellScript = "\"${GE_XCODE_BUILD_PHASES:?}/EmbedSourceVersionIntoBundle\"\n";
@@ -486,23 +466,19 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-URLHelperApp/Pods-URLHelperApp-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-URLHelperApp/Pods-URLHelperApp-resources.sh",
 				"${PODS_CONFIGURATION_BUILD_DIR}/GEAppConfig/GEAppConfig-Sources.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/URLHelperApp/URLHelperApp-Sources.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GEAppConfig-Sources.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/URLHelperApp-Sources.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-URLHelperApp/Pods-URLHelperApp-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-URLHelperApp/Pods-URLHelperApp-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
