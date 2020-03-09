@@ -1,0 +1,9 @@
+#! /bin/sh
+
+set -x
+set -euo pipefail
+
+wd=$(dirname "$0")
+
+mint run xcodeprojFixUUIDs *.xcodeproj
+cp "$wd"/xcworkspace-addons/dot-xcodesamplecode.plist *.xcworkspace/.xcodesamplecode.plist

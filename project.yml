@@ -1,0 +1,13 @@
+name: URLHelperApp
+
+targets:
+  URLHelperApp:
+    type: application
+    platform: macOS
+    deploymentTarget: "10.13"
+    sources: [URLHelperApp]
+    scheme: {}
+
+options:
+  bundleIdPrefix: com.grigorye
+  postGenCommand: ./XcodeGen/postGen

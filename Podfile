@@ -56,14 +56,6 @@ target 'URLHelperApp' do
   script_phase :name => 'Embed Source Version into Bundle', :shell_path => '/bin/sh -e', :script => <<~END
     "${GE_XCODE_BUILD_PHASES:?}/EmbedSourceVersionIntoBundle"
   END
-
-  target 'URLHelperAppTests' do
-    inherit! :search_paths
-  end
-
-  target 'URLHelperAppUITests' do
-    inherit! :search_paths
-  end
 end
 
 post_install do |installer|
