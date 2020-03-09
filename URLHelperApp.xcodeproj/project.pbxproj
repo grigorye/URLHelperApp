@@ -13,11 +13,13 @@
 		A8173D6AF8EECF480E94EC63 /* SampleURLToAppMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04634F1F0AA55201CB6D9832 /* SampleURLToAppMapper.swift */; };
 		CD0E08A4B8ED016A8A0050D8 /* ProductDefinition.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3BB5068352C66FDB00730052 /* ProductDefinition.plist */; };
 		DE46C98E95E3F613F898D10A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C8C26CC7B132143F91AB20D /* Main.storyboard */; };
+		ED6A868673E18EFCCF2627B6 /* Pods_URLHelperApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D99589F28D9B328A071EF9B /* Pods_URLHelperApp.framework */; };
 		EE6FC3E51FBC47F43B2ABB10 /* URLToAppMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD3566952BDABF1E23E85C2 /* URLToAppMapper.swift */; };
 		F4D846B3A47DE0A3DA8BD377 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6D4E5AA3E3CA98B73A1DAFC /* AppDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0121ABE7782EC232AD59126A /* Pods-URLHelperApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-URLHelperApp.release.xcconfig"; path = "Target Support Files/Pods-URLHelperApp/Pods-URLHelperApp.release.xcconfig"; sourceTree = "<group>"; };
 		04634F1F0AA55201CB6D9832 /* SampleURLToAppMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleURLToAppMapper.swift; sourceTree = "<group>"; };
 		0F373B4D40F89A80AC60D7BA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2FD3566952BDABF1E23E85C2 /* URLToAppMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLToAppMapper.swift; sourceTree = "<group>"; };
@@ -27,13 +29,34 @@
 		5410954603FFCA196CCA5CD9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		6EB7B45A3342F239B82039CB /* URLHelperApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = URLHelperApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C8EB43E07B67B7AD419BDB0 /* URLHelperApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = URLHelperApp.entitlements; sourceTree = "<group>"; };
+		7D99589F28D9B328A071EF9B /* Pods_URLHelperApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_URLHelperApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CB2FF3D634045A143CE49EE0 /* Pods-URLHelperApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-URLHelperApp.debug.xcconfig"; path = "Target Support Files/Pods-URLHelperApp/Pods-URLHelperApp.debug.xcconfig"; sourceTree = "<group>"; };
 		CF3A4566543604906FCD4FD5 /* ScriptBasedURLToAppMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScriptBasedURLToAppMapper.swift; sourceTree = "<group>"; };
 		E6D4E5AA3E3CA98B73A1DAFC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EA0716DBDBB0D3A0CECD9AC1 /* URLHelperApp-app.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "URLHelperApp-app.xcconfig"; sourceTree = "<group>"; };
 		F3CA7441568A72D91AB9ED0A /* AppBundleIdentifierForURL */ = {isa = PBXFileReference; path = AppBundleIdentifierForURL; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFrameworksBuildPhase section */
+		C9D5F57E61B33E1756DBBA20 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ED6A868673E18EFCCF2627B6 /* Pods_URLHelperApp.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
 /* Begin PBXGroup section */
+		1725A862E27A89DEC7004F0E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7D99589F28D9B328A071EF9B /* Pods_URLHelperApp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		34FDEFBC8AAD947C865B17A5 /* URLHelperApp */ = {
 			isa = PBXGroup;
 			children = (
@@ -69,11 +92,23 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		F5F82EB874100E053F369D06 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				CB2FF3D634045A143CE49EE0 /* Pods-URLHelperApp.debug.xcconfig */,
+				0121ABE7782EC232AD59126A /* Pods-URLHelperApp.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		FEF03035A66B516171B0C979 = {
 			isa = PBXGroup;
 			children = (
 				34FDEFBC8AAD947C865B17A5 /* URLHelperApp */,
 				C8C1540EB31768AC7C1AE493 /* Products */,
+				F5F82EB874100E053F369D06 /* Pods */,
+				1725A862E27A89DEC7004F0E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -84,8 +119,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1E86406DFE71790FE1D76C3D /* Build configuration list for PBXNativeTarget "URLHelperApp" */;
 			buildPhases = (
+				44B5A623494C1B7A18EC78A1 /* [CP] Check Pods Manifest.lock */,
 				4359AD13533E3B6D81DB8490 /* Sources */,
 				9FFA8DFA086EAC4C42465171 /* Resources */,
+				C9D5F57E61B33E1756DBBA20 /* Frameworks */,
+				6FD1C283A2858F032B4F7C2E /* [CP] Embed Pods Frameworks */,
+				7790593EC8F95971B61C632C /* [CP] Copy Pods Resources */,
+				F4F878F3A7290EF08EE0F103 /* [CP-User] Integrate Fabric */,
+				0437A495BF0C4653B9F2ADD4 /* [CP-User] Embed Source Version into Bundle */,
 			);
 			buildRules = (
 			);
@@ -114,6 +155,7 @@
 				Base,
 			);
 			mainGroup = FEF03035A66B516171B0C979;
+			productRefGroup = C8C1540EB31768AC7C1AE493 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -134,6 +176,101 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0437A495BF0C4653B9F2ADD4 /* [CP-User] Embed Source Version into Bundle */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP-User] Embed Source Version into Bundle";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = "/bin/sh -e";
+			shellScript = "\"${GE_XCODE_BUILD_PHASES:?}/EmbedSourceVersionIntoBundle\"\n";
+		};
+		44B5A623494C1B7A18EC78A1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-URLHelperApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6FD1C283A2858F032B4F7C2E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-URLHelperApp/Pods-URLHelperApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-URLHelperApp/Pods-URLHelperApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-URLHelperApp/Pods-URLHelperApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7790593EC8F95971B61C632C /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-URLHelperApp/Pods-URLHelperApp-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-URLHelperApp/Pods-URLHelperApp-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-URLHelperApp/Pods-URLHelperApp-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F4F878F3A7290EF08EE0F103 /* [CP-User] Integrate Fabric */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP-User] Integrate Fabric";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = "/bin/sh -e";
+			shellScript = "\"${GE_XCODE_BUILD_PHASES:?}/IntegrateFabric\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		4359AD13533E3B6D81DB8490 /* Sources */ = {
@@ -164,6 +301,7 @@
 /* Begin XCBuildConfiguration section */
 		1E5999AE3D4BAB4EEA372DC3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0121ABE7782EC232AD59126A /* Pods-URLHelperApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -180,6 +318,7 @@
 		};
 		6A7C7E08BE4E1657AB5D2746 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CB2FF3D634045A143CE49EE0 /* Pods-URLHelperApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
