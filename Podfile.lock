@@ -80,8 +80,8 @@ EXTERNAL SOURCES:
     :path: "."
 
 SPEC CHECKSUMS:
-  Crashlytics: 540b7e5f5da5a042647227a5e3ac51d85eed06df
-  Fabric: 706c8b8098fff96c33c0db69cbf81f9c551d0d74
+  Crashlytics: 9220f5bc89e7a618df411b4f639389dbfb0e03d2
+  Fabric: ea977e3cd9c20425516d3dafd3bf8c941c51223f
   GEAppConfig: 9f4ac5a10f210376fdde2eac3f78097c02a90cbc
   GEContinuousIntegration: cf34074a2e5e907195763903915a37d68479de3e
   GEFoundation: 39c91037bcb7439f9345586985124e0ce53e0b70
