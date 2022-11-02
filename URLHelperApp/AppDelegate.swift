@@ -6,7 +6,6 @@
 //  Copyright © 2018 Grigory Entin. All rights reserved.
 //
 
-import GEAppConfig
 import GEFoundation
 import GETracing
 import Cocoa
@@ -36,11 +35,6 @@ private let urlToAppMapper: URLToAppMapper = ScriptBasedURLToAppMapper()
 
 @NSApplicationMain
 class AppDelegate : NSObject, NSApplicationDelegate {
-
-	private let appDelegateBase: AppDelegateBase = {
-		_ = initializeDefaults
-		return AppDelegateBase()
-	}()
 
     func application(_ application: NSApplication, open urls: [URL]) {
         x$(urls)
