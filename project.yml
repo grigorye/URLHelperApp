@@ -4,10 +4,22 @@ targets:
   URLHelperApp:
     type: application
     platform: macOS
-    deploymentTarget: "10.13"
+    deploymentTarget: '10.13'
     sources: [URLHelperApp]
     scheme: {}
+    dependencies:
+      - package: GETracing
+      - package: GEFoundation
+      - package: Then
 
 options:
   bundleIdPrefix: com.grigorye
   postGenCommand: ./XcodeGen/postGen
+
+packages:
+  GETracing:
+    path: Submodules/GETracing
+  GEFoundation:
+    path: Submodules/GEFoundation
+  Then:
+    path: Submodules/Then
