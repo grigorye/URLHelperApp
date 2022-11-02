@@ -2,7 +2,10 @@
 
 set -x
 set -euo pipefail
+shopt -s nullglob
 
 wd=$(dirname "$0")
 
-cp "$wd"/xcworkspace-addons/dot-xcodesamplecode.plist *.xcworkspace/.xcodesamplecode.plist
+# shellcheck disable=SC2035
+xcodeproj=(*.xcodeproj)
+cp "$wd"/xcworkspace-addons/dot-xcodesamplecode.plist "${xcodeproj[0]}"/.xcodesamplecode.plist
