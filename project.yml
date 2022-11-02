@@ -16,6 +16,13 @@ options:
   bundleIdPrefix: com.grigorye
   postGenCommand: ./XcodeGen/postGen
 
+settings:
+  MARKETING_VERSION: '0.1'
+  CURRENT_PROJECT_VERSION: '$(BUNDLE_VERSION)'
+  
+  # Overridden for CI runs:
+  BUNDLE_VERSION: Local
+
 packages:
   GETracing:
     path: Submodules/GETracing
