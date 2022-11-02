@@ -1,0 +1,9 @@
+#! /bin/bash
+
+set -x
+set -euo pipefail
+shopt -s nullglob
+
+xcodeproj=(*.xcodeproj)
+
+echo -project "${xcodeproj[0]}"
