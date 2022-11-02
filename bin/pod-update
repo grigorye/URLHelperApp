@@ -1,7 +1,0 @@
-#! /bin/sh
-
-set -x
-set -euo pipefail
-
-bundle exec pod update "$@"
-mint run xcodeprojFixUUIDs *.xcodeproj
