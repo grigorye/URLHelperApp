@@ -18,6 +18,7 @@
 		DE46C98E95E3F613F898D10A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C8C26CC7B132143F91AB20D /* Main.storyboard */; };
 		EE6FC3E51FBC47F43B2ABB10 /* URLToAppMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD3566952BDABF1E23E85C2 /* URLToAppMapper.swift */; };
 		F4D846B3A47DE0A3DA8BD377 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6D4E5AA3E3CA98B73A1DAFC /* AppDelegate.swift */; };
+		FCA6A5DE62013D7987B45982 /* AppBundleIdentifierForURL in Resources */ = {isa = PBXBuildFile; fileRef = F3CA7441568A72D91AB9ED0A /* AppBundleIdentifierForURL */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -167,6 +168,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FCA6A5DE62013D7987B45982 /* AppBundleIdentifierForURL in Resources */,
 				7AD4E5AA57C7491A29DD548A /* Assets.xcassets in Resources */,
 				DE46C98E95E3F613F898D10A /* Main.storyboard in Resources */,
 				CD0E08A4B8ED016A8A0050D8 /* ProductDefinition.plist in Resources */,
