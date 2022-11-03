@@ -177,14 +177,6 @@
             </array>
         </dict>
         <dict>
-            <key>CFBundleTypeRole</key>
-            <string>Viewer</string>
-            <key>LSItemContentTypes</key>
-            <array>
-                <string>org.chromium.extension</string>
-            </array>
-        </dict>
-        <dict>
             <key>CFBundleTypeIconFile</key>
             <string>document.icns</string>
             <key>CFBundleTypeName</key>
