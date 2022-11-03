@@ -18,8 +18,10 @@ options:
 
 settings:
   MARKETING_VERSION: '0.1'
+  DEVELOPMENT_TEAM: 465NA5BW7E
+
   CURRENT_PROJECT_VERSION: '$(BUNDLE_VERSION)'
-  
+
   # Overridden for CI runs:
   BUNDLE_VERSION: Local
 
