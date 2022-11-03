@@ -211,6 +211,8 @@
 				CODE_SIGN_ENTITLEMENTS = URLHelperApp/URLHelperApp.entitlements;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = URLHelperApp/Info.plist;
+				INFOPLIST_OTHER_PREPROCESSOR_FLAGS = "-CC";
+				INFOPLIST_PREPROCESS = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -228,6 +230,8 @@
 				CODE_SIGN_ENTITLEMENTS = URLHelperApp/URLHelperApp.entitlements;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = URLHelperApp/Info.plist;
+				INFOPLIST_OTHER_PREPROCESSOR_FLAGS = "-CC";
+				INFOPLIST_PREPROCESS = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
