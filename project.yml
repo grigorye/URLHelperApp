@@ -5,7 +5,11 @@ targets:
     type: application
     platform: macOS
     deploymentTarget: '10.13'
-    sources: [URLHelperApp]
+    sources:
+      - path: URLHelperApp
+      - path: URLHelperApp/AppBundleIdentifierForURL
+        buildPhase: resources
+
     scheme: {}
     dependencies:
       - package: GETracing
