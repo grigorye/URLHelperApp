@@ -9,7 +9,8 @@ targets:
       - path: URLHelperApp
       - path: URLHelperApp/AppBundleIdentifierForURL
         buildPhase: resources
-
+    settings:
+      CODE_SIGN_ENTITLEMENTS: URLHelperApp/URLHelperApp.entitlements
     scheme: {}
     dependencies:
       - package: GETracing
