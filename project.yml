@@ -11,6 +11,8 @@ targets:
         buildPhase: resources
     settings:
       CODE_SIGN_ENTITLEMENTS: URLHelperApp/URLHelperApp.entitlements
+      INFOPLIST_PREPROCESS: YES
+      INFOPLIST_OTHER_PREPROCESSOR_FLAGS: -CC
     scheme: {}
     dependencies:
       - package: GETracing
