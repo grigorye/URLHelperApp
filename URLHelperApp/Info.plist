@@ -27,6 +27,8 @@
 			<string>HTML document</string>
 			<key>CFBundleTypeRole</key>
 			<string>Viewer</string>
+			<key>LSHandlerRank</key>
+			<string>None</string>
 			<key>LSItemContentTypes</key>
 			<array>
 				<string>public.html</string>
@@ -39,6 +41,8 @@
 			<string>XHTML document</string>
 			<key>CFBundleTypeRole</key>
 			<string>Viewer</string>
+			<key>LSHandlerRank</key>
+			<string>None</string>
 			<key>LSItemContentTypes</key>
 			<array>
 				<string>public.xhtml</string>
