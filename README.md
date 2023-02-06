@@ -1,5 +1,4 @@
-
-[![](https://gitlab.com/grigorye/URLHelperApp/badges/master/pipeline.svg)](https://gitlab.com/grigorye/URLHelperApp/commits/master)
+[![build-app](https://github.com/grigorye/URLHelperApp/actions/workflows/build-app.yml/badge.svg)](https://github.com/grigorye/URLHelperApp/actions/workflows/build-app.yml)
 
 # URLHelperApp
 
