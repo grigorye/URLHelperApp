@@ -1,0 +1,8 @@
+#! /bin/bash
+
+set -x
+set -euo pipefail
+
+ver="$(perl -lne 'print $1 if /^ *MARKETING_VERSION: '"'(.*)'"'$/' < project.yml)"
+
+echo "$ver"

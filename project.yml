@@ -1,0 +1,42 @@
+name: URLHelperApp
+
+targets:
+  URLHelperApp:
+    type: application
+    platform: macOS
+    deploymentTarget: '10.13'
+    sources:
+      - path: URLHelperApp
+      - path: URLHelperApp/AppBundleIdentifierForURL
+        buildPhase: resources
+    settings:
+      CODE_SIGN_ENTITLEMENTS: URLHelperApp/URLHelperApp.entitlements
+      INFOPLIST_PREPROCESS: YES
+      INFOPLIST_OTHER_PREPROCESSOR_FLAGS: -CC
+    scheme: {}
+    dependencies:
+      - package: GETracing
+      - package: GEFoundation
+      - package: Then
+
+options:
+  bundleIdPrefix: com.grigorye
+  postGenCommand: ./XcodeGen/postGen
+
+settings:
+  MARKETING_VERSION: '0.1'
+  DEVELOPMENT_TEAM: 465NA5BW7E
+
+  CURRENT_PROJECT_VERSION: '$(BUNDLE_VERSION)'
+  GENERATE_INFOPLIST_FILE: YES
+
+  # Overridden for CI runs:
+  BUNDLE_VERSION: Local
+
+packages:
+  GETracing:
+    path: Submodules/GETracing
+  GEFoundation:
+    path: Submodules/GEFoundation
+  Then:
+    path: Submodules/Then
