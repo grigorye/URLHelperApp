@@ -10,6 +10,7 @@
 		55ECF3E29EBBB19C159C7BB8 /* GEFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = EE4C52D91EED8A200C064FBA /* GEFoundation */; };
 		5715C480E346379531A9D9EC /* ScriptBasedURLToAppMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3A4566543604906FCD4FD5 /* ScriptBasedURLToAppMapper.swift */; };
 		5CF6D1ADB3F991E7C2853706 /* EventTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D641E9373DEBED726D4942 /* EventTracking.swift */; };
+		65EDD0AF271DF915740CDD4B /* OutputFromLaunching.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D611ED8AF79AF1023E4AFB /* OutputFromLaunching.swift */; };
 		7D1C177B6E3B595E2146969E /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65678A92C9D331AF92778B9B /* Media.xcassets */; };
 		8A85F019660374BA67C14C4E /* GETracing in Frameworks */ = {isa = PBXBuildFile; productRef = B13C7DF95D6B17A9777F34B3 /* GETracing */; };
 		A8173D6AF8EECF480E94EC63 /* SampleURLToAppMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04634F1F0AA55201CB6D9832 /* SampleURLToAppMapper.swift */; };
@@ -34,6 +35,7 @@
 		7ED469B018F890A263C74616 /* URLHelperApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = URLHelperApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DCA18418A0D6DF61D2CBC60 /* Then */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Then; path = Submodules/Then; sourceTree = SOURCE_ROOT; };
 		BF37A78A3D847BA7570208E3 /* GEFoundation */ = {isa = PBXFileReference; lastKnownFileType = folder; name = GEFoundation; path = Submodules/GEFoundation; sourceTree = SOURCE_ROOT; };
+		C3D611ED8AF79AF1023E4AFB /* OutputFromLaunching.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutputFromLaunching.swift; sourceTree = "<group>"; };
 		CF3A4566543604906FCD4FD5 /* ScriptBasedURLToAppMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScriptBasedURLToAppMapper.swift; sourceTree = "<group>"; };
 		E6D4E5AA3E3CA98B73A1DAFC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EA0716DBDBB0D3A0CECD9AC1 /* URLHelperApp-app.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "URLHelperApp-app.xcconfig"; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 				5410954603FFCA196CCA5CD9 /* Info.plist */,
 				8C8C26CC7B132143F91AB20D /* Main.storyboard */,
 				65678A92C9D331AF92778B9B /* Media.xcassets */,
+				C3D611ED8AF79AF1023E4AFB /* OutputFromLaunching.swift */,
 				04634F1F0AA55201CB6D9832 /* SampleURLToAppMapper.swift */,
 				CF3A4566543604906FCD4FD5 /* ScriptBasedURLToAppMapper.swift */,
 				EA0716DBDBB0D3A0CECD9AC1 /* URLHelperApp-app.xcconfig */,
@@ -184,6 +187,7 @@
 			files = (
 				F4D846B3A47DE0A3DA8BD377 /* AppDelegate.swift in Sources */,
 				5CF6D1ADB3F991E7C2853706 /* EventTracking.swift in Sources */,
+				65EDD0AF271DF915740CDD4B /* OutputFromLaunching.swift in Sources */,
 				A8173D6AF8EECF480E94EC63 /* SampleURLToAppMapper.swift in Sources */,
 				5715C480E346379531A9D9EC /* ScriptBasedURLToAppMapper.swift in Sources */,
 				EE6FC3E51FBC47F43B2ABB10 /* URLToAppMapper.swift in Sources */,
@@ -217,7 +221,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				PRODUCT_BUNDLE_IDENTIFIER = com.grigorye.URLHelperApp;
 				SDKROOT = macosx;
 			};
@@ -236,7 +240,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				PRODUCT_BUNDLE_IDENTIFIER = com.grigorye.URLHelperApp;
 				SDKROOT = macosx;
 			};

@@ -35,47 +35,39 @@ private let urlToAppMapper: URLToAppMapper = ScriptBasedURLToAppMapper()
 
 @NSApplicationMain
 class AppDelegate : NSObject, NSApplicationDelegate {
-
+    
+    override init() {
+        _ = initializeDefaults
+        super.init()
+    }
+    
     func application(_ application: NSApplication, open urls: [URL]) {
         x$(urls)
-        resolve(urls) { result in
-            do {
-                let urlsByAppBundleIdentifier = try result.get()
-                for (appBundleIdentifier, urls) in urlsByAppBundleIdentifier {
-                    try open(urls, withAppWithBundleIdentifier: appBundleIdentifier)
-                }
-            } catch {
-                x$(error)
+        let task = Task {
+            let urlsByAppBundleIdentifier = try await resolve(urls)
+            for (appBundleIdentifier, urls) in urlsByAppBundleIdentifier {
+                try open(urls, withAppWithBundleIdentifier: appBundleIdentifier)
             }
+        }
+        Task {
+            let result = await task.result
+            x$(result)
         }
     }
 }
 
-private func resolve(_ urls: [URL], completion: @escaping (Result<[String: [URL]], Error>) -> Void) {
-    
-    var urlsByAppBundleIdentifier: [String: [URL]] = [:]
-    let resultGroup = DispatchGroup()
-    let queryQueue = DispatchQueue.global()
-    let resultQueue = DispatchQueue(label: "")
-    urls.forEach { url in
-        resultGroup.enter()
-        queryQueue.async {
-            urlToAppMapper.appBundleIdentifierFor(url) { result in
-                resultQueue.async {
-                    do {
-                        let appBundleIdentifier = try result.get()
-                        urlsByAppBundleIdentifier[appBundleIdentifier, default: []] += [url]
-                    } catch {
-                        x$(error)
-                        x$(url)
-                    }
-                    resultGroup.leave()
-                }
+private func resolve(_ urls: [URL]) async throws -> [String: [URL]] {
+    try await withThrowingTaskGroup(of: (url: URL, appBundleIdentifier: String).self) { group in
+        for url in urls {
+            group.addTask {
+                try await (url, urlToAppMapper.appBundleIdentifierFor(url))
             }
         }
-    }
-    resultGroup.notify(queue: .main) {
-        completion(.success(x$(urlsByAppBundleIdentifier)))
+        return try await group.reduce([:]) { acc, x in
+            var acc = acc
+            acc[x.appBundleIdentifier, default: []] += [x.url]
+            return acc
+        }
     }
 }
 
@@ -160,7 +152,7 @@ private func resolveAppURLWithWorkspace(forBundleIdentifier bundleIdentifier: St
     enum Error: Swift.Error {
         case couldNotLocateApplication(bundleIdentifier: String)
     }
-
+    
     guard let appURL = workspace.urlForApplication(withBundleIdentifier: bundleIdentifier) else {
         throw Error.couldNotLocateApplication(bundleIdentifier: bundleIdentifier)
     }
@@ -169,10 +161,10 @@ private func resolveAppURLWithWorkspace(forBundleIdentifier bundleIdentifier: St
 
 private let workspace = NSWorkspace()
 
-let initializeDefaults: Void = {
-    #if false
-	traceEnabledEnforced = true
-	sourceLabelsEnabledEnforced = true
-    #endif
-	x$(())
+private let initializeDefaults: Void = {
+#if false
+    traceEnabledEnforced = true
+    sourceLabelsEnabledEnforced = true
+#endif
+    x$(())
 }()
