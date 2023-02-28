@@ -35,7 +35,12 @@ private let urlToAppMapper: URLToAppMapper = ScriptBasedURLToAppMapper()
 
 @NSApplicationMain
 class AppDelegate : NSObject, NSApplicationDelegate {
-
+    
+    override init() {
+        _ = initializeDefaults
+        super.init()
+    }
+    
     func application(_ application: NSApplication, open urls: [URL]) {
         x$(urls)
         let task = Task {
@@ -147,7 +152,7 @@ private func resolveAppURLWithWorkspace(forBundleIdentifier bundleIdentifier: St
     enum Error: Swift.Error {
         case couldNotLocateApplication(bundleIdentifier: String)
     }
-
+    
     guard let appURL = workspace.urlForApplication(withBundleIdentifier: bundleIdentifier) else {
         throw Error.couldNotLocateApplication(bundleIdentifier: bundleIdentifier)
     }
@@ -156,10 +161,10 @@ private func resolveAppURLWithWorkspace(forBundleIdentifier bundleIdentifier: St
 
 private let workspace = NSWorkspace()
 
-let initializeDefaults: Void = {
-    #if false
-	traceEnabledEnforced = true
-	sourceLabelsEnabledEnforced = true
-    #endif
-	x$(())
+private let initializeDefaults: Void = {
+#if false
+    traceEnabledEnforced = true
+    sourceLabelsEnabledEnforced = true
+#endif
+    x$(())
 }()
