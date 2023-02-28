@@ -9,7 +9,5 @@
 import Foundation
 
 protocol URLToAppMapper {
-    
-    func appBundleIdentifierFor(_ url: URL, completionHandler: @escaping (Result<String, Error>) -> Void)
+    func appBundleIdentifierFor(_ url: URL) async throws -> String
 }
-

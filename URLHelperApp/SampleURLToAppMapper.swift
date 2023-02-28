@@ -22,10 +22,10 @@ extension String {
 
 class SampleURLToAppMapper : URLToAppMapper {
     
-    func appBundleIdentifierFor(_ url: URL, completionHandler: @escaping (Result<String, Error>) -> Void) {
+    func appBundleIdentifierFor(_ url: URL) async throws -> String {
         let urlString = url.absoluteString
         let appBundleIdentifier = urlString.matchingAppBundleIdentifier()
         
-        completionHandler(.success(appBundleIdentifier))
+        return appBundleIdentifier
     }
 }
