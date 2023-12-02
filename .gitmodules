@@ -1,12 +1,3 @@
-[submodule "Submodules/GETracing"]
-	path = Submodules/GETracing
-	url = https://github.com/grigorye/GETracing
-[submodule "Submodules/GEFoundation"]
-	path = Submodules/GEFoundation
-	url = https://github.com/grigorye/GEFoundation
-[submodule "Submodules/Then"]
-	path = Submodules/Then
-	url = https://github.com/devxoul/Then
 [submodule "Submodules/ReusableWorkflows"]
 	path = Submodules/ReusableWorkflows
 	url = https://github.com/grigorye/ReusableWorkflows

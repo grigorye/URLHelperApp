@@ -1,10 +1,12 @@
+# yamllint disable rule:truthy
+# yamllint disable-line rule:document-start
 name: URLHelperApp
 
 targets:
   URLHelperApp:
     type: application
     platform: macOS
-    deploymentTarget: '10.15'
+    deploymentTarget: '12.0'
     sources:
       - path: URLHelperApp
       - path: URLHelperApp/AppBundleIdentifierForURL
@@ -14,10 +16,7 @@ targets:
       INFOPLIST_PREPROCESS: YES
       INFOPLIST_OTHER_PREPROCESSOR_FLAGS: -CC
     scheme: {}
-    dependencies:
-      - package: GETracing
-      - package: GEFoundation
-      - package: Then
+    dependencies: []
 
 options:
   bundleIdPrefix: com.grigorye
@@ -33,10 +32,4 @@ settings:
   # Overridden for CI runs:
   BUNDLE_VERSION: Local
 
-packages:
-  GETracing:
-    path: Submodules/GETracing
-  GEFoundation:
-    path: Submodules/GEFoundation
-  Then:
-    path: Submodules/Then
+packages: {}
