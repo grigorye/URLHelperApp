@@ -6,52 +6,35 @@
 //  Copyright © 2018 Grigory Entin. All rights reserved.
 //
 
-import GEFoundation
-import GETracing
 import Cocoa
+import os.log
 
-extension TypedUserDefaults {
-    
-    @NSManaged var openMethod: String?
-    
-    enum OpenMethod : String {
-        case openURLsWithAppBundleIdentifier
-        case openURLsWithApplicationAtURL
-    }
-	
-    var openMethodValue: OpenMethod? {
-        guard let rawValue = defaults.openMethod else {
-            return nil
-        }
-        return OpenMethod(rawValue: rawValue)
-    }
-}
-
-extension TypedUserDefaults.OpenMethod {
-	static let `default`: TypedUserDefaults.OpenMethod = .openURLsWithApplicationAtURL
-}
+private let log = Logger(subsystem: "AppDelegate", category: "")
 
 private let urlToAppMapper: URLToAppMapper = ScriptBasedURLToAppMapper()
 
 @NSApplicationMain
 class AppDelegate : NSObject, NSApplicationDelegate {
     
-    override init() {
-        _ = initializeDefaults
-        super.init()
+    func applicationDidFinishLaunching(_ notification: Notification) {
+        log.info("Did finish launching.")
     }
     
     func application(_ application: NSApplication, open urls: [URL]) {
-        x$(urls)
+        log.info("Opening \(urls).")
         let task = Task {
             let urlsByAppBundleIdentifier = try await resolve(urls)
             for (appBundleIdentifier, urls) in urlsByAppBundleIdentifier {
-                try open(urls, withAppWithBundleIdentifier: appBundleIdentifier)
+                try await open(urls, withAppWithBundleIdentifier: appBundleIdentifier)
             }
         }
         Task {
-            let result = await task.result
-            x$(result)
+            do {
+                try await task.result.get()
+                log.info("Succeeded with opening \(urls).")
+            } catch {
+                log.error("Failed to open \(urls): \(error).")
+            }
         }
     }
 }
@@ -71,100 +54,34 @@ private func resolve(_ urls: [URL]) async throws -> [String: [URL]] {
     }
 }
 
-private func open(_ urls: [URL], withAppWithBundleIdentifier appBundleIdentifier: String) throws {
-    
-    switch defaults.openMethodValue ?? .default {
-    case .openURLsWithAppBundleIdentifier:
-        open(urls: urls, withAppWithBundleIdentifier: appBundleIdentifier)
-    case .openURLsWithApplicationAtURL:
-        try open(urls: urls, resolvingAppWithBundleIdentifier: appBundleIdentifier)
+private func open(_ urls: [URL], withAppWithBundleIdentifier appBundleIdentifier: String) async throws {
+    guard let appURL = resolveAppURL(forBundleIdentifier: appBundleIdentifier) else {
+        return
     }
+    try await open(urls: urls, withAppAtURL: appURL)
 }
 
-struct OpenURLsWithAppWithBundleIdentifier : Action {
-    typealias Input = (urls: [URL], appBundleIdentifier: String)
-    typealias SuccessResult = ()
-    typealias FailureResult = Error
-
-    enum Error: Swift.Error {
-        case workspaceFailedToOpenApp
-    }
-}
-
-private func open(urls: [URL], withAppWithBundleIdentifier appBundleIdentifier: String) {
-    
-    let action = OpenURLsWithAppWithBundleIdentifier()
-    track(will: action, with: (urls: urls, appBundleIdentifier: appBundleIdentifier))
-    let succeeded = workspace.open(urls, withAppBundleIdentifier: appBundleIdentifier, options: .withErrorPresentation, additionalEventParamDescriptor: nil, launchIdentifiers: nil)
-    if succeeded {
-        track(succeeded: action, with: ())
-    } else {
-        track(failed: action, due: .workspaceFailedToOpenApp)
-    }
-}
-
-private func open(urls: [URL], resolvingAppWithBundleIdentifier appBundleIdentifier: String) throws {
-    
-    let appURL = try resolveAppURL(forBundleIdentifier: appBundleIdentifier)
-    open(urls: urls, withAppAtURL: appURL)
-}
-
-struct OpenURLsWithAppAtURL : Action {
-    typealias Input = (urls: [URL], appURL: URL)
-    typealias SuccessResult = (NSRunningApplication)
-    typealias FailureResult = Error
-}
-
-private func open(urls: [URL], withAppAtURL appURL: URL) {
-    
-    let action = OpenURLsWithAppAtURL()
-    track(will: action, with: (urls: urls, appURL: appURL))
+private func open(urls: [URL], withAppAtURL appURL: URL) async throws {
+    log.info("Using \(appURL) to open \(urls).")
+    let configuration = NSWorkspace.OpenConfiguration()
+    configuration.promptsUserIfNeeded = true
     do {
-        let runningApp = try workspace.open(urls, withApplicationAt: appURL, options: .withErrorPresentation, configuration: [:])
-        track(succeeded: action, with: (runningApp))
+        try await workspace.open(urls, withApplicationAt: appURL, configuration: configuration)
+        log.info("Succeeded with using \(appURL) to open \(urls).")
     } catch {
-        track(failed: action, due: error)
-    }
-}
-
-struct ResolveAppForBundleIdentifier : Action {
-    typealias Input = String
-    typealias SuccessResult = URL
-    typealias FailureResult = Error
-}
-
-private func resolveAppURL(forBundleIdentifier bundleIdentifier: String) throws -> URL {
-    
-    let action = ResolveAppForBundleIdentifier()
-    track(will: action, with: bundleIdentifier)
-    do {
-        let appURL = try resolveAppURLWithWorkspace(forBundleIdentifier: bundleIdentifier)
-        track(succeeded: action, with: appURL)
-        return appURL
-    } catch {
-        track(failed: action, due: error)
+        log.error("Failed to use \(appURL) to open \(urls): \(error).")
         throw error
     }
 }
 
-private func resolveAppURLWithWorkspace(forBundleIdentifier bundleIdentifier: String) throws -> URL {
-    
-    enum Error: Swift.Error {
-        case couldNotLocateApplication(bundleIdentifier: String)
-    }
-    
+private func resolveAppURL(forBundleIdentifier bundleIdentifier: String) -> URL? {
+    log.info("Resolving URL for app bundle identifier \(bundleIdentifier).")
     guard let appURL = workspace.urlForApplication(withBundleIdentifier: bundleIdentifier) else {
-        throw Error.couldNotLocateApplication(bundleIdentifier: bundleIdentifier)
+        log.error("Could not get URL for app with bundle identifier \(bundleIdentifier).")
+        return nil
     }
+    log.info("Resolved app bundle identifier \(bundleIdentifier) into \(appURL).")
     return appURL
 }
 
 private let workspace = NSWorkspace()
-
-private let initializeDefaults: Void = {
-#if false
-    traceEnabledEnforced = true
-    sourceLabelsEnabledEnforced = true
-#endif
-    x$(())
-}()

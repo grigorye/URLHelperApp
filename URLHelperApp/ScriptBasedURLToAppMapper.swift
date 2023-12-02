@@ -6,7 +6,6 @@
 //  Copyright © 2018 Grigory Entin. All rights reserved.
 //
 
-import GETracing
 import Foundation
 
 class ScriptBasedURLToAppMapper : URLToAppMapper {
