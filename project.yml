@@ -14,10 +14,7 @@ targets:
       INFOPLIST_PREPROCESS: YES
       INFOPLIST_OTHER_PREPROCESSOR_FLAGS: -CC
     scheme: {}
-    dependencies:
-      - package: GETracing
-      - package: GEFoundation
-      - package: Then
+    dependencies: []
 
 options:
   bundleIdPrefix: com.grigorye
@@ -33,10 +30,4 @@ settings:
   # Overridden for CI runs:
   BUNDLE_VERSION: Local
 
-packages:
-  GETracing:
-    path: Submodules/GETracing
-  GEFoundation:
-    path: Submodules/GEFoundation
-  Then:
-    path: Submodules/Then
+packages: {}
