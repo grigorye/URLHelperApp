@@ -9,7 +9,7 @@ targets:
     deploymentTarget: '12.0'
     sources:
       - path: URLHelperApp
-      - path: URLHelperApp/AppBundleIdentifierForURL
+      - path: URLHelperApp/AppBundleIdentifierAndURLForURL
         buildPhase: resources
     settings:
       CODE_SIGN_ENTITLEMENTS: URLHelperApp/URLHelperApp.entitlements
