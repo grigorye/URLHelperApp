@@ -15,6 +15,9 @@ targets:
       CODE_SIGN_ENTITLEMENTS: URLHelperApp/URLHelperApp.entitlements
       INFOPLIST_PREPROCESS: YES
       INFOPLIST_OTHER_PREPROCESSOR_FLAGS: -CC
+      INFOPLIST_KEY_LSApplicationCategoryType: public.app-category.utilities
+      INFOPLIST_KEY_NSPrincipalClass: NSApplication
+      INFOPLIST_KEY_NSMainStoryboardFile: Main
     scheme: {}
     dependencies: []
 
