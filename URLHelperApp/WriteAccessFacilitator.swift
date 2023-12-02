@@ -8,9 +8,9 @@
 import AppKit
 import Foundation
 
-let fileManager = FileManager()
+private let fileManager = FileManager()
 
-var appName: String {
+private var appName: String {
     Bundle.main.object(forInfoDictionaryKey: "CFBundleDisplayName") as? String ?? fileManager.displayName(atPath: Bundle.main.bundlePath)
 }
 
