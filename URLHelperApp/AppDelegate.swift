@@ -9,7 +9,7 @@
 import Cocoa
 import os.log
 
-private let log = Logger(subsystem: "AppDelegate", category: "")
+private let log = Logger(category: "AppDelegate")
 
 private let urlResolver: URLResolver = ScriptBasedURLResolver()
 
