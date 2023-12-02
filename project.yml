@@ -6,7 +6,7 @@ targets:
   URLHelperApp:
     type: application
     platform: macOS
-    deploymentTarget: '10.15'
+    deploymentTarget: '12.0'
     sources:
       - path: URLHelperApp
       - path: URLHelperApp/AppBundleIdentifierForURL
