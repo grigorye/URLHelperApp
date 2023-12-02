@@ -1,3 +1,5 @@
+# yamllint disable rule:truthy
+# yamllint disable-line rule:document-start
 name: URLHelperApp
 
 targets:
