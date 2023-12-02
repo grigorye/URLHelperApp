@@ -1,4 +1,3 @@
-import Then
 import Foundation
 import os.log
 
@@ -31,7 +30,7 @@ func outputFromLaunching(executableURL: URL, arguments: [String]) async throws -
             return standardOutputData
         }
         
-        let process = Process().then {
+        let process = {
             $0.executableURL = executableURL
             $0.arguments = arguments
             $0.standardOutput = standardOutputPipe
@@ -40,7 +39,8 @@ func outputFromLaunching(executableURL: URL, arguments: [String]) async throws -
                 let r = Result { try terminationHandler(process) }
                 c.resume(with: r)
             }
-        }
+            return $0
+        } (Process())
         
         do {
             try process.run()
