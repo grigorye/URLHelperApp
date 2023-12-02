@@ -1,28 +1,34 @@
-import GETracing
 import Then
 import Foundation
+import os.log
+
+private let log = Logger(subsystem: "OutputFromLaunching", category: "")
 
 func outputFromLaunching(executableURL: URL, arguments: [String]) async throws -> Data {
-    try await withCheckedThrowingContinuation { c in
-        enum Error : Swift.Error {
-            case badTerminationReason(Process.TerminationReason)
-            case badTerminationStatus(Int32)
-        }
+    log.info("Executing \(executableURL.standardizedFileURL.path) with \(arguments).")
+    return try await withCheckedThrowingContinuation { c in
         let standardOutputPipe = Pipe()
         let standardErrorPipe = Pipe()
         
         let terminationHandler = { (process: Process) in
             let standardErrorData = standardErrorPipe.fileHandleForReading.readDataToEndOfFile()
-            x$(.multiline(standardErrorData))
+            log.error("Error data: \(standardErrorData).")
+            let standardOutputData = standardOutputPipe.fileHandleForReading.readDataToEndOfFile()
+            log.info("Output data: \(standardOutputData).")
             let terminationReason = process.terminationReason
             guard case .exit = terminationReason else {
-                throw Error.badTerminationReason(terminationReason)
+                log.error("Exec failed. Not exited normally: \(String(describing: terminationReason)).")
+                log.error("Stderr: \(String(data: standardOutputData, encoding: .utf8) ?? "null").")
+                throw OutputFromLaunchingError.badTerminationReason(terminationReason)
             }
             let terminationStatus = process.terminationStatus
             guard 0 == terminationStatus else {
-                throw Error.badTerminationStatus(terminationStatus)
+                log.error("Exec failed. Termination status: \(terminationStatus).")
+                throw OutputFromLaunchingError.badTerminationStatus(terminationStatus)
             }
-            return standardOutputPipe.fileHandleForReading.readDataToEndOfFile()
+            log.info("Exec succeeded.")
+            log.info("Stdout: \(String(data: standardOutputData, encoding: .utf8) ?? "<non-decodable-from-utf8>").")
+            return standardOutputData
         }
         
         let process = Process().then {
@@ -39,7 +45,13 @@ func outputFromLaunching(executableURL: URL, arguments: [String]) async throws -
         do {
             try process.run()
         } catch {
+            log.error("Launch failed: \(error).")
             c.resume(throwing: error)
         }
     }
+}
+
+enum OutputFromLaunchingError: Error {
+    case badTerminationReason(Process.TerminationReason)
+    case badTerminationStatus(Int32)
 }
