@@ -1,11 +1,21 @@
-#! /bin/sh -x
+#! /bin/bash
 
 # This script defines the rules/acts like a matcher between an url and the corresponding application that is used to open the url.
 # Feel free to modify it as necessary/replace it with something more appropriate.
 
-set -eu -o pipefail
+set -x
+set -euo pipefail
 
-url="$1"; shift
+url="$1"
+shift
+
+v1Resolver=~/Library/Application\ Scripts/com.grigorye.URLHelperApp/AppBundleIdentifierForURL
+
+if test -f "$v1Resolver"; then
+	appBundleIdentifier=$("$v1Resolver" "$url")
+	echo '{"finalURL": "'"$url"'", "appBundleIdentifier": "'"$appBundleIdentifier"'" }'
+	exit
+fi
 
 # Process redirects before making the "routing" decision.
 redirectedURL=$(curl -Ls -o /dev/null -w '%{url_effective}' "$url" || echo "$url")
@@ -16,6 +26,6 @@ case "$redirectedURL" in
 #	echo "org.epichrome.app.Coding"
 #	;;
 *)
-	echo 'com.google.Chrome'
+	echo '{"finalURL": "'"$redirectedURL"'", "appBundleIdentifier": "com.google.Chrome" }'
 	;;
 esac

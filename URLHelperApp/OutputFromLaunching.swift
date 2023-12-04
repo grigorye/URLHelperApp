@@ -1,7 +1,7 @@
 import Foundation
 import os.log
 
-private let log = Logger(subsystem: "OutputFromLaunching", category: "")
+private let log = Logger(category: "OutputFromLaunching")
 
 func outputFromLaunching(executableURL: URL, arguments: [String]) async throws -> Data {
     log.info("Executing \(executableURL.standardizedFileURL.path) with \(arguments).")

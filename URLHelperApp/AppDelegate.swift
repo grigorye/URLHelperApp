@@ -9,9 +9,9 @@
 import Cocoa
 import os.log
 
-private let log = Logger(subsystem: "AppDelegate", category: "")
+private let log = Logger(category: "AppDelegate")
 
-private let urlToAppMapper: URLToAppMapper = ScriptBasedURLToAppMapper()
+private let urlResolver: URLResolver = ScriptBasedURLResolver()
 
 @NSApplicationMain
 class AppDelegate : NSObject, NSApplicationDelegate {
@@ -40,13 +40,17 @@ class AppDelegate : NSObject, NSApplicationDelegate {
 }
 
 private func resolve(_ urls: [URL]) async throws -> [String: [URL]] {
-    try await withThrowingTaskGroup(of: (url: URL, appBundleIdentifier: String).self) { group in
+    try await withThrowingTaskGroup(of: (url: URL, appBundleIdentifier: String)?.self) { group in
         for url in urls {
             group.addTask {
-                try await (url, urlToAppMapper.appBundleIdentifierFor(url))
+                guard let resolution = try await urlResolver.resolveURL(url) else {
+                    log.error("Unable to resolve \(url).")
+                    return nil
+                }
+                return (resolution.finalURL, resolution.appBundleIdentifier)
             }
         }
-        return try await group.reduce([:]) { acc, x in
+        return try await group.compactMap { $0 }.reduce([:]) { acc, x in
             var acc = acc
             acc[x.appBundleIdentifier, default: []] += [x.url]
             return acc
