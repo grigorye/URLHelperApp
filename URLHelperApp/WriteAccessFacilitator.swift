@@ -15,7 +15,8 @@ private var appName: String {
 }
 
 func facilitateWriteAccessForURLResolverScript(at url: URL) async throws -> URL? {
-    try await facilitateWriteAccessViaUserInteraction(to: url, message: String(localized: "Select the location for the resolver script for \(appName)"))
+    let leave = Activity("Facilitate Write Access To Resolver Script").enter(); defer { leave() }
+    return try await facilitateWriteAccessViaUserInteraction(to: url, message: String(localized: "Select the location for the resolver script for \(appName)"))
 }
 
 @MainActor

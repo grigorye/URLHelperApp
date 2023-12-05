@@ -7,6 +7,9 @@
 //
 
 import Foundation
+import os.log
+
+private let log = Logger(category: "ScriptBasedURLResolver")
 
 class ScriptBasedURLResolver : URLResolver {
     
@@ -24,19 +27,25 @@ class ScriptBasedURLResolver : URLResolver {
     }
     
     func makeSureResolverScriptExists(resolverURL: URL) async throws -> URL? {
+        let leave = Activity("Make Sure Resolver Script Exists").enter(); defer { leave() }
+        log.info("Attempting to copy \(self.bundledResolverURL.path, privacy: .public)")
+        log.info("Destination: \(resolverURL.standardizedFileURL.path, privacy: .public)")
         do {
             try fileManager.copyItem(at: bundledResolverURL, to: resolverURL)
             return resolverURL
         } catch {
             switch error {
             case CocoaError.fileWriteFileExists:
+                log.info("The script already exists: we're done")
                 return resolverURL
             case CocoaError.fileWriteNoPermission:
+                log.info("User permission required")
                 guard let updatedResolverURL = try await facilitateWriteAccessForURLResolverScript(at: resolverURL) else {
                     return nil
                 }
                 return try await makeSureResolverScriptExists(resolverURL: updatedResolverURL)
             default:
+                log.error("Copy failed: \(error)")
                 throw error
             }
         }
